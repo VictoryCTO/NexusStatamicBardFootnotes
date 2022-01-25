@@ -22,6 +22,6 @@ class ServiceProvider extends AddonServiceProvider
     public function boot()
     {
         parent::boot();
-        Augmentor::addMark(LesMillsClassType::class);
+        Augmentor::addMark(CustomBardClass::class);
     }
 }
