@@ -157,11 +157,14 @@ var CustomBardClasses = /*#__PURE__*/function () {
     key: "pasteRules",
     value: function pasteRules(_ref3) {
       var type = _ref3.type;
-      return [pasteRule(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi, type, function (url) {
-        return {
-          url: url
-        };
-      })];
+      return [];
+      /*return [
+          pasteRule(
+              /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi,
+              type,
+              url => ({ url: url }),
+          ),
+      ]*/
     }
   }]);
 
