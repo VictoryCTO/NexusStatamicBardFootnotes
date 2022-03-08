@@ -43,6 +43,14 @@ export default class CustomBardClasses {
         }
     }
 
+    inputRules({type}) {
+        return [] // Input rules if you want
+    }
+
+    plugins() {
+        return []
+    }
+
     pasteRules({ type }) {
         return [
             pasteRule(

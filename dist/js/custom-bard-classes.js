@@ -143,9 +143,20 @@ var CustomBardClasses = /*#__PURE__*/function () {
       };
     }
   }, {
-    key: "pasteRules",
-    value: function pasteRules(_ref2) {
+    key: "inputRules",
+    value: function inputRules(_ref2) {
       var type = _ref2.type;
+      return []; // Input rules if you want
+    }
+  }, {
+    key: "plugins",
+    value: function plugins() {
+      return [];
+    }
+  }, {
+    key: "pasteRules",
+    value: function pasteRules(_ref3) {
+      var type = _ref3.type;
       return [pasteRule(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi, type, function (url) {
         return {
           url: url
