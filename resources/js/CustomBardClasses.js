@@ -6,8 +6,12 @@ export default class CustomBardClasses {
     schema() {
         return {
             attrs: {
-                url: '',
-                text: '',
+                url: {
+                    default: null,
+                },
+                text: {
+                    default: null,
+                },
             },
             parseDOM: [
                 {
@@ -39,11 +43,13 @@ export default class CustomBardClasses {
         }
     }
 
-    pasteRules({type}) {
-        return [];
-    }
-
-    plugins() {
-        return [];
+    pasteRules({ type }) {
+        return [
+            pasteRule(
+                /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi,
+                type,
+                url => ({ url: url }),
+            ),
+        ]
     }
 }

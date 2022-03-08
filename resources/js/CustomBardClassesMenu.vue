@@ -9,7 +9,7 @@
         ></button>
         <div class="class-type-container" v-if="showOptions" v-click-outside="closeClassTypeMenu">
           <div><span class="class-type-label">URL</span><input v-model='url' class="class-type-input" @change="setClassUrl(url)"></div>
-          <div><span class="class-type-label">Text</span><textarea v-model='footnote' class="class-type-input" @change="setClassText(text)"></textarea></div>
+          <div><span class="class-type-label">Text</span><textarea v-model='text' class="class-type-input" @change="setClassText(text)"></textarea></div>
         </div>
     </div>
 </template>

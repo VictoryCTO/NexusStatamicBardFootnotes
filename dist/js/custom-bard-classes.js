@@ -104,8 +104,12 @@ var CustomBardClasses = /*#__PURE__*/function () {
     value: function schema() {
       return {
         attrs: {
-          url: '',
-          text: ''
+          url: {
+            "default": null
+          },
+          text: {
+            "default": null
+          }
         },
         parseDOM: [{
           tag: "footnote",
@@ -142,12 +146,11 @@ var CustomBardClasses = /*#__PURE__*/function () {
     key: "pasteRules",
     value: function pasteRules(_ref2) {
       var type = _ref2.type;
-      return [];
-    }
-  }, {
-    key: "plugins",
-    value: function plugins() {
-      return [];
+      return [pasteRule(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi, type, function (url) {
+        return {
+          url: url
+        };
+      })];
     }
   }]);
 
@@ -446,12 +449,12 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.footnote,
-                    expression: "footnote"
+                    value: _vm.text,
+                    expression: "text"
                   }
                 ],
                 staticClass: "class-type-input",
-                domProps: { value: _vm.footnote },
+                domProps: { value: _vm.text },
                 on: {
                   change: function($event) {
                     return _vm.setClassText(_vm.text)
@@ -460,7 +463,7 @@ var render = function() {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.footnote = $event.target.value
+                    _vm.text = $event.target.value
                   }
                 }
               })
@@ -978,7 +981,7 @@ Statamic.$bard.extend(function (_ref) {
 Statamic.$bard.buttons(function () {
   return {
     name: 'custombardclass',
-    text: 'Source Reference',
+    text: 'Footnote',
     command: 'classType',
     args: {
       url: "",
