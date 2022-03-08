@@ -1,6 +1,6 @@
 <?php
 
-namespace BrunoSubert\CustomBardClasses;
+namespace VictoryCTO\CustomBardClasses;
 
 use Statamic\Fieldtypes\Bard\Augmentor;
 use Statamic\Providers\AddonServiceProvider;

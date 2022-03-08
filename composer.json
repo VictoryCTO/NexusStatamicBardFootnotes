@@ -1,6 +1,6 @@
 {
-    "name": "brunosubert/custom-bard-classes",
-    "description": "A custom button for Bard to allow a span with a class to be added to selected text.",
+    "name": "victorycto/custom-bard-classes",
+    "description": "A custom button for Bard to allow footnote tag to be added to selected text.",
     "type": "statamic-addon",
     "keywords": [
         "statamic",
@@ -8,13 +8,19 @@
     ],
     "autoload": {
         "psr-4": {
-            "BrunoSubert\\CustomBardClasses\\": "src"
+            "VictoryCTO\\CustomBardClasses\\": "src"
         }
     },
     "license": "MIT",
     "authors": [
         {
+            "name": "Marty Friedel"
+        },
+        {
             "name": "Bruno Subert"
+        },
+        {
+            "name": "Tim Gallaugher"
         }
     ],
     "require": {
@@ -27,7 +33,7 @@
         },
         "laravel": {
             "providers": [
-                "BrunoSubert\\CustomBardClasses\\ServiceProvider"
+                "VictoryCTO\\CustomBardClasses\\ServiceProvider"
             ]
         }
     }
