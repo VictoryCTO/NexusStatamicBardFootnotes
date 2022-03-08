@@ -6,21 +6,23 @@ export default class CustomBardClasses {
     schema() {
         return {
             attrs: {
-                key: '',
+                url: '',
+                text: '',
             },
             parseDOM: [
                 {
-                    tag: "span.bard-class",
+                    tag: "footnote",
                     getAttrs: (dom) => ({
-                        key: dom.getAttribute('data-class')
+                        url: dom.getAttribute('data-url'),
+                        text: dom.getAttribute('data-text'),
                     })
                 }
             ],
             toDOM: (mark) => [
-                "span",
+                "footnote",
                 {
-                    'class': 'bard-class ' + mark.attrs.key,
-                    'data-class': mark.attrs.key
+                    'data-url': mark.attrs.url,
+                    'data-text': mark.attrs.text
                 },
                 0,
             ],
@@ -29,7 +31,7 @@ export default class CustomBardClasses {
 
     commands({type, updateMark, removeMark}) {
         return attrs => {
-            if (attrs.key) {
+            if (attrs.url || attrs.text) {
                 return updateMark(type, attrs)
             }
 

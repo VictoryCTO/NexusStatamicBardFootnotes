@@ -5,12 +5,13 @@ Statamic.$bard.extend(({mark}) => mark(new CustomBardClasses()));
 Statamic.$bard.buttons(() => {
     return {
         name: 'custombardclass',
-        text: 'Custom Bard Class',
+        text: 'Source Reference',
         command: 'classType',
         args: {
-            key: ""
+            url: "",
+            text: "",
         },
-        icon: 'les-mills',
+        icon: 'bookmark',
         component: CustomBardClassesMenu
     };
 });

@@ -7,7 +7,7 @@ use ProseMirrorToHtml\Marks\Mark;
 class CustomBardClass extends Mark
 {
     protected $markType = 'customBardClass';
-    protected $tagName = 'span';
+    protected $tagName = 'footnote';
 
     public function matching(): bool
     {
@@ -18,9 +18,9 @@ class CustomBardClass extends Mark
     {
         return [
             [
-                'tag'   => 'span',
+                'tag'   => 'footnote',
                 'attrs' => [
-                    'class' => 'bard-class '.$this->mark->attrs->key
+                    'class' => 'bard-class '.$this->mark->attrs->value
                 ],
             ],
         ];

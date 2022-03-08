@@ -8,11 +8,8 @@
             @click="showOptions = !showOptions"
         ></button>
         <div class="class-type-container" v-if="showOptions" v-click-outside="closeClassTypeMenu">
-            <button v-for="(type, key) in classTypes" class="class-type-button" @click="setClassType(key)"
-                    :class="{ 'active' : key == currentKey }">
-                <span class="class-type-mark" :style="'background-color: ' + type.colour"></span>
-                <span class="class-type-label">{{ type.name }}</span>
-            </button>
+          <div><span class="class-type-label">URL</span><input v-model='url' class="class-type-input" @change="setClassUrl(url)"></div>
+          <div><span class="class-type-label">Text</span><textarea v-model='footnote' class="class-type-input" @change="setClassText(text)"></textarea></div>
         </div>
     </div>
 </template>
@@ -25,40 +22,11 @@ export default {
     },
     mixins: [BardToolbarButton],
     computed: {
-        classTypes() {
-            return {
-                'bodyattack': {
-                    name: 'BodyAttack',
-                    colour: '#FCC500'
-                },
-                'bodybalance': {
-                    name: 'BodyBalance',
-                    colour: '#b9d47d'
-                },
-                'bodypump': {
-                    name: 'BodyPump',
-                    colour: '#ea4851'
-                },
-                'bodyvive': {
-                    name: 'BodyVive',
-                    colour: '#752f8b'
-                },
-                'cxworx': {
-                    name: 'CXWORX',
-                    colour: '#e75204'
-                },
-                'les-mills-core': {
-                    name: 'Les Mills Core',
-                    colour: '#444444'
-                },
-                'les-mills-tone': {
-                    name: 'Les Mills Tone',
-                    colour: '#777777'
-                }
-            };
+        currentUrl() {
+            return this.editor.getMarkAttrs('customBardClass').url;
         },
-        currentKey() {
-            return this.editor.getMarkAttrs('customBardClass').key;
+        currentText() {
+            return this.editor.getMarkAttrs('customBardClass').text;
         }
     },
     data() {
@@ -71,14 +39,19 @@ export default {
             // close the menu
             this.showOptions = false;
         },
-        setClassType(classTypeKey) {
+        setClassUrl(classTypeVal) {
             // update the editor
             this.editor.commands.customBardClass({
-                key: classTypeKey == this.currentKey ? false : classTypeKey
+                url: classTypeVal,
+                text: this.currentText,
             })
-
-            // hide the menu
-            this.showOptions = false;
+        },
+        setClassText(classTypeVal) {
+            // update the editor
+            this.editor.commands.customBardClass({
+                url: this.currentUrl,
+                text: classTypeVal,
+            })
         },
     }
 };
@@ -98,6 +71,9 @@ export default {
 
 .class-type-button.active {
     @apply bg-gray-200;
+}
+
+.class-type-input {
 }
 
 .class-type-label {
