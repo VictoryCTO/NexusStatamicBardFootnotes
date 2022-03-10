@@ -9,9 +9,9 @@ Statamic.$bard.buttons(() => {
         command: 'classType',
         args: {
             url: "",
-            text: "",
+            text: ""
         },
-        icon: 'bookmark',
+        icon: 'book-medical',
         component: CustomBardClassesMenu
     };
 });

@@ -20,7 +20,8 @@ class CustomBardClass extends Mark
             [
                 'tag'   => 'footnote',
                 'attrs' => [
-                    'class' => 'bard-class '.$this->mark->attrs->value
+                    'url' => 'bard-class '.$this->mark->attrs->url,
+                    'text' => 'bard-class '.$this->mark->attrs->text
                 ],
             ],
         ];

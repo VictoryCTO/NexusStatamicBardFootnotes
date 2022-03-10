@@ -164,7 +164,7 @@ var CustomBardClasses = /*#__PURE__*/function () {
               type,
               url => ({ url: url }),
           ),
-      ]*/
+      ];*/
     }
   }]);
 
@@ -405,7 +405,7 @@ var render = function() {
         }
       ],
       staticClass: "bard-toolbar-button",
-      class: { active: _vm.currentKey || _vm.showOptions },
+      class: { active: _vm.currentUrl || _vm.currentText || _vm.showOptions },
       domProps: { innerHTML: _vm._s(_vm.button.html) },
       on: {
         click: function($event) {
@@ -1001,7 +1001,7 @@ Statamic.$bard.buttons(function () {
       url: "",
       text: ""
     },
-    icon: 'bookmark',
+    icon: 'book-medical',
     component: _CustomBardClassesMenu_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });

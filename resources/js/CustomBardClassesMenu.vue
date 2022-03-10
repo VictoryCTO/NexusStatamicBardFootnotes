@@ -2,7 +2,7 @@
     <div class="class-type-wrapper">
         <button
             class="bard-toolbar-button"
-            :class="{ 'active': currentKey || showOptions }"
+            :class="{ 'active': currentUrl || currentText || showOptions }"
             v-html="button.html"
             v-tooltip="button.text"
             @click="showOptions = !showOptions"
