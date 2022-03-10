@@ -163,8 +163,7 @@ var CustomBardClasses = /*#__PURE__*/function () {
   }, {
     key: "plugins",
     value: function plugins(_ref3) {
-      var type = _ref3.type,
-          tiptap = _ref3.tiptap,
+      var tiptap = _ref3.tiptap,
           getMarkAttrs = _ref3.getMarkAttrs;
       return [new tiptap.Plugin({
         props: {

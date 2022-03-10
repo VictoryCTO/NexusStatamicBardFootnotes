@@ -51,7 +51,7 @@ export default class CustomBardClasses {
         return [] // Input rules if you want
     }
 
-    plugins({type, tiptap, getMarkAttrs}) {
+    plugins({tiptap, getMarkAttrs}) {
         return [
             new tiptap.Plugin({
                 props: {
