@@ -157,7 +157,8 @@ var CustomBardClasses = /*#__PURE__*/function () {
   }, {
     key: "plugins",
     value: function plugins(_ref3) {
-      var Plugin = _ref3.Plugin,
+      var type = _ref3.type,
+          Plugin = _ref3.Plugin,
           getMarkAttrs = _ref3.getMarkAttrs;
       return [new Plugin({
         props: {

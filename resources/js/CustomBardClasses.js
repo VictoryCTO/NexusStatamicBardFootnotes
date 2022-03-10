@@ -48,7 +48,7 @@ export default class CustomBardClasses {
         return [] // Input rules if you want
     }
 
-    plugins({Plugin, getMarkAttrs}) {
+    plugins({type, Plugin, getMarkAttrs}) {
         return [
             new Plugin({
                 props: {
