@@ -57,6 +57,25 @@ export default {
 };
 </script>
 <style lang="postcss">
+.fa-footnote {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  background-color: $blue;
+  color: $white;
+  padding: .5rem;
+  font-size: 1rem;
+  border-radius: .3rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+.fa-footnote:before {
+    content: "\f7e6";
+}
 .class-type-wrapper {
     @apply inline-block relative;
 }
