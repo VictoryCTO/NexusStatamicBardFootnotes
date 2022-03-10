@@ -13,6 +13,7 @@ export default class CustomBardClasses {
                     default: null,
                 },
             },
+            inclusive: false,
             parseDOM: [
                 {
                     tag: "footnote",
@@ -47,8 +48,22 @@ export default class CustomBardClasses {
         return [] // Input rules if you want
     }
 
-    plugins() {
-        return []
+    plugins({Plugin, getMarkAttrs}) {
+        return [
+            new Plugin({
+                props: {
+                    handleClick: (view, pos, event) => {
+                        const { schema } = view.state
+                        const attrs = getMarkAttrs(view.state, schema.marks.customBardClass)
+
+                        if (attrs.url && event.target instanceof HTMLUnknownElement) {
+                            event.stopPropagation()
+                            window.open(attrs.url, attrs.text)
+                        }
+                    },
+                },
+            }),
+        ]
     }
 
     pasteRules({ type, pasteRule }) {

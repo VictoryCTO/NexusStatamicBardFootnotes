@@ -116,6 +116,7 @@ var CustomBardClasses = /*#__PURE__*/function () {
             "default": null
           }
         },
+        inclusive: false,
         parseDOM: [{
           tag: "footnote",
           getAttrs: function getAttrs(dom) {
@@ -155,14 +156,28 @@ var CustomBardClasses = /*#__PURE__*/function () {
     }
   }, {
     key: "plugins",
-    value: function plugins() {
-      return [];
+    value: function plugins(_ref3) {
+      var Plugin = _ref3.Plugin,
+          getMarkAttrs = _ref3.getMarkAttrs;
+      return [new Plugin({
+        props: {
+          handleClick: function handleClick(view, pos, event) {
+            var schema = view.state.schema;
+            var attrs = getMarkAttrs(view.state, schema.marks.customBardClass);
+
+            if (attrs.url && event.target instanceof HTMLUnknownElement) {
+              event.stopPropagation();
+              window.open(attrs.url, attrs.text);
+            }
+          }
+        }
+      })];
     }
   }, {
     key: "pasteRules",
-    value: function pasteRules(_ref3) {
-      var type = _ref3.type,
-          pasteRule = _ref3.pasteRule;
+    value: function pasteRules(_ref4) {
+      var type = _ref4.type,
+          pasteRule = _ref4.pasteRule;
       return [pasteRule(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi, type, function (url) {
         return {
           url: url
