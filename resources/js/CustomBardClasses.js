@@ -51,14 +51,13 @@ export default class CustomBardClasses {
         return []
     }
 
-    pasteRules({ type }) {
-        return [];
-        /*return [
+    pasteRules({ type, pasteRule }) {
+        return [
             pasteRule(
                 /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi,
                 type,
                 url => ({ url: url }),
             ),
-        ];*/
+        ]
     }
 }
