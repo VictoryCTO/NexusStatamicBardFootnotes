@@ -1001,7 +1001,7 @@ Statamic.$bard.buttons(function () {
       url: "",
       text: ""
     },
-    icon: 'book-medical',
+    icon: 'les-mills',
     component: _CustomBardClassesMenu_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });

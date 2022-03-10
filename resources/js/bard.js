@@ -11,7 +11,7 @@ Statamic.$bard.buttons(() => {
             url: "",
             text: ""
         },
-        icon: 'book-medical',
+        icon: 'les-mills',
         component: CustomBardClassesMenu
     };
 });
