@@ -60,11 +60,6 @@ export default {
 .fa-footnote {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  background-color: $blue;
-  color: $white;
-  padding: .5rem;
-  font-size: 1rem;
-  border-radius: .3rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
