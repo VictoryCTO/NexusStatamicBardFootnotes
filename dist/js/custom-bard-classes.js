@@ -94,6 +94,12 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
+//import { Plugin } from 'tiptap';
+var _Statamic$$bard$tipta = Statamic.$bard.tiptap,
+    tiptap = _Statamic$$bard$tipta.core,
+    commands = _Statamic$$bard$tipta.commands,
+    utils = _Statamic$$bard$tipta.utils;
+
 var CustomBardClasses = /*#__PURE__*/function () {
   function CustomBardClasses() {
     _classCallCheck(this, CustomBardClasses);
@@ -158,9 +164,9 @@ var CustomBardClasses = /*#__PURE__*/function () {
     key: "plugins",
     value: function plugins(_ref3) {
       var type = _ref3.type,
-          Plugin = _ref3.Plugin,
+          tiptap = _ref3.tiptap,
           getMarkAttrs = _ref3.getMarkAttrs;
-      return [new Plugin({
+      return [new tiptap.Plugin({
         props: {
           handleClick: function handleClick(view, pos, event) {
             var schema = view.state.schema;

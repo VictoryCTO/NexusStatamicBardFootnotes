@@ -1,3 +1,6 @@
+//import { Plugin } from 'tiptap';
+const { core: tiptap, commands, utils } = Statamic.$bard.tiptap;
+
 export default class CustomBardClasses {
     name() {
         return "customBardClass";
@@ -48,9 +51,9 @@ export default class CustomBardClasses {
         return [] // Input rules if you want
     }
 
-    plugins({type, Plugin, getMarkAttrs}) {
+    plugins({type, tiptap, getMarkAttrs}) {
         return [
-            new Plugin({
+            new tiptap.Plugin({
                 props: {
                     handleClick: (view, pos, event) => {
                         const { schema } = view.state
