@@ -31,10 +31,6 @@
 }
 
 /* Class Type Styles */
-.les-mills-class {
-    text-transform: uppercase;
-    font-weight: bold;
-}
 
 footnote {
     visibility: hidden;
@@ -43,6 +39,6 @@ footnote {
 footnote:before {
     visibility: visible;
     vertical-align: super;
-    font-size: .5rem;
+    font-size: smaller;
     content: '#source';
 }

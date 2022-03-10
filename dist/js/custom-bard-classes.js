@@ -29,6 +29,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   directives: {
@@ -192,7 +197,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.fa-footnote {\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  display: inline-block;\n  font-style: normal;\n  font-variant: normal;\n  text-rendering: auto;\n  line-height: 1;\n}\n.fa-footnote:before {\n    content: \"\\f7e6\";\n}\n.class-type-wrapper {\n  position: relative;\n  display: inline-block;\n}\n.class-type-container {\n  position: absolute;\n  z-index: 10;\n}\n.class-type-container > :not([hidden]) ~ :not([hidden]) {\n  --tw-divide-y-reverse: 0;\n  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));\n  --tw-divide-opacity: 1;\n  border-color: rgba(243, 244, 246, var(--tw-divide-opacity));\n}\n.class-type-container {\n  border-radius: 0.125rem;\n  border-width: 1px;\n  --tw-border-opacity: 1;\n  border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n  --tw-bg-opacity: 1;\n  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));\n  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n.class-type-button {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  text-align: left;\n}\n.class-type-button:hover {\n  --tw-bg-opacity: 1;\n  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));\n}\n.class-type-button.active {\n  --tw-bg-opacity: 1;\n  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));\n}\n.class-type-input {\n}\n.class-type-label {\n  display: block;\n  white-space: nowrap;\n  text-align: left;\n}\n.class-type-mark {\n  margin-right: 0.75rem;\n  display: block;\n  height: 1rem;\n  width: 1rem;\n  flex: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.class-type-wrapper {\n\n    position: relative;\n\n    display: inline-block\n}\n.class-type-container {\n\n    position: absolute;\n\n    z-index: 10\n}\n.class-type-container > :not([hidden]) ~ :not([hidden]) {\n\n    --tw-divide-y-reverse: 0;\n\n    border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n\n    border-bottom-width: calc(1px * var(--tw-divide-y-reverse));\n\n    --tw-divide-opacity: 1;\n\n    border-color: rgba(243, 244, 246, var(--tw-divide-opacity))\n}\n.class-type-container {\n\n    border-radius: 0.125rem;\n\n    border-width: 1px;\n\n    --tw-border-opacity: 1;\n\n    border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));\n\n    padding: 1rem;\n\n    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\n\n    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)\n}\n.class-type-button {\n\n    display: flex;\n\n    width: 100%;\n\n    align-items: center;\n\n    padding-left: 0.75rem;\n\n    padding-right: 0.75rem;\n\n    padding-top: 0.5rem;\n\n    padding-bottom: 0.5rem;\n\n    text-align: left\n}\n.class-type-button:hover {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(243, 244, 246, var(--tw-bg-opacity))\n}\n.class-type-button.active {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(229, 231, 235, var(--tw-bg-opacity))\n}\n.class-type-input {\n\n    --tw-border-opacity: 1;\n\n    border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n\n    padding: 0.5rem\n}\n.class-type-label {\n\n    display: block;\n\n    white-space: nowrap;\n\n    text-align: left\n}\n.class-type-mark {\n\n    margin-right: 0.75rem;\n\n    display: block;\n\n    height: 1rem;\n\n    width: 1rem;\n\n    flex: none\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -430,7 +435,6 @@ var render = function() {
           },
           [
             _c("div", [
-              _c("span", { staticClass: "class-type-label" }, [_vm._v("URL")]),
               _c("input", {
                 directives: [
                   {
@@ -441,6 +445,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "class-type-input",
+                attrs: { placeholder: "URL" },
                 domProps: { value: _vm.url },
                 on: {
                   change: function($event) {
@@ -457,7 +462,6 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", [
-              _c("span", { staticClass: "class-type-label" }, [_vm._v("Text")]),
               _c("textarea", {
                 directives: [
                   {
@@ -468,6 +472,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "class-type-input",
+                attrs: { placeholder: "Footnote Text" },
                 domProps: { value: _vm.text },
                 on: {
                   change: function($event) {
@@ -1001,7 +1006,7 @@ Statamic.$bard.buttons(function () {
       url: "",
       text: ""
     },
-    icon: 'footnote',
+    icon: 'les-mills',
     component: _CustomBardClassesMenu_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });

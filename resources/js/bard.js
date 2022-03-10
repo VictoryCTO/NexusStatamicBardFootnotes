@@ -11,7 +11,7 @@ Statamic.$bard.buttons(() => {
             url: "",
             text: ""
         },
-        icon: 'footnote',
+        icon: 'les-mills',
         component: CustomBardClassesMenu
     };
 });

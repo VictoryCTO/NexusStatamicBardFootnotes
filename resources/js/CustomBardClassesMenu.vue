@@ -6,10 +6,15 @@
             v-html="button.html"
             v-tooltip="button.text"
             @click="showOptions = !showOptions"
-        ></button>
+        >
+        </button>
         <div class="class-type-container" v-if="showOptions" v-click-outside="closeClassTypeMenu">
-          <div><span class="class-type-label">URL</span><input v-model='url' class="class-type-input" @change="setClassUrl(url)"></div>
-          <div><span class="class-type-label">Text</span><textarea v-model='text' class="class-type-input" @change="setClassText(text)"></textarea></div>
+            <div>
+                <input v-model='url' class="class-type-input" @change="setClassUrl(url)" :placeholder="'URL'">
+            </div>
+            <div>
+                <textarea v-model='text' class="class-type-input" @change="setClassText(text)" :placeholder="'Footnote Text'"></textarea>
+            </div>
         </div>
     </div>
 </template>
@@ -57,26 +62,12 @@ export default {
 };
 </script>
 <style lang="postcss">
-.fa-footnote {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-}
-.fa-footnote:before {
-    content: "\f7e6";
-}
 .class-type-wrapper {
     @apply inline-block relative;
 }
 
 .class-type-container {
-    @apply absolute bg-white border border-gray-300 rounded-sm z-10 divide-y divide-gray-100 shadow-lg;
+    @apply p-4 absolute bg-white border border-gray-300 rounded-sm z-10 divide-y divide-gray-100 shadow-lg;
 }
 
 .class-type-button {
@@ -88,6 +79,7 @@ export default {
 }
 
 .class-type-input {
+    @apply p-2 border-gray-300;
 }
 
 .class-type-label {
