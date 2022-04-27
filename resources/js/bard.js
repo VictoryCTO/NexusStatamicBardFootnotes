@@ -1,17 +1,17 @@
-import CustomBardClasses from "./CustomBardClasses";
-import CustomBardClassesMenu from "./CustomBardClassesMenu.vue";
+import NexusStatamicBardFootnote from "./NexusStatamicBardFootnote";
+import NexusStatamicBardFootnotesMenu from "./NexusStatamicBardFootnotesMenu.vue";
 
-Statamic.$bard.extend(({mark}) => mark(new CustomBardClasses()));
+Statamic.$bard.extend(({mark}) => mark(new NexusStatamicBardFootnote()));
 Statamic.$bard.buttons(() => {
     return {
-        name: 'custombardclass',
+        name: 'nexusStatamicBardFootnote',
         text: 'Footnote',
-        command: 'classType',
+        command: 'statamicBardFootnote',
         args: {
             url: "",
-            text: ""
+            text: "",
         },
-        icon: 'les-mills',
-        component: CustomBardClassesMenu
+        icon: 'bookmark',
+        component: NexusStatamicBardFootnotesMenu
     };
 });

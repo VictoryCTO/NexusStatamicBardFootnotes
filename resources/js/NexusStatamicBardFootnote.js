@@ -1,9 +1,6 @@
-//import { Plugin } from 'tiptap';
-const { core: tiptap, commands, utils } = Statamic.$bard.tiptap;
-
-export default class CustomBardClasses {
+export default class NexusStatamicBardFootnote {
     name() {
-        return "customBardClass";
+        return "nexusStatamicBardFootnote";
     }
 
     schema() {
@@ -16,7 +13,6 @@ export default class CustomBardClasses {
                     default: null,
                 },
             },
-            inclusive: false,
             parseDOM: [
                 {
                     tag: "footnote",
@@ -51,31 +47,18 @@ export default class CustomBardClasses {
         return [] // Input rules if you want
     }
 
-    plugins({tiptap, getMarkAttrs}) {
-        return [
-            new tiptap.Plugin({
-                props: {
-                    handleClick: (view, pos, event) => {
-                        const { schema } = view.state
-                        const attrs = getMarkAttrs(view.state, schema.marks.customBardClass)
-
-                        if (attrs.url && event.target instanceof HTMLUnknownElement) {
-                            event.stopPropagation()
-                            window.open(attrs.url, attrs.text)
-                        }
-                    },
-                },
-            }),
-        ]
+    plugins() {
+        return []
     }
 
-    pasteRules({ type, pasteRule }) {
-        return [
+    pasteRules({ type }) {
+        return []
+        /*return [
             pasteRule(
                 /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z]{2,}\b([-a-zA-Z0-9@:%_+.~#?&//=,()!]*)/gi,
                 type,
                 url => ({ url: url }),
             ),
-        ]
+        ]*/
     }
 }

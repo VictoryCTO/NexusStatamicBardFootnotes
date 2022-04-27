@@ -1,6 +1,6 @@
 <?php
 
-namespace VictoryCTO\CustomBardClasses;
+namespace VictoryCTO\NexusStatamicBardFootnotes;
 
 use Statamic\Fieldtypes\Bard\Augmentor;
 use Statamic\Providers\AddonServiceProvider;
@@ -8,11 +8,11 @@ use Statamic\Providers\AddonServiceProvider;
 class ServiceProvider extends AddonServiceProvider
 {
     protected $scripts = [
-        __DIR__.'/../dist/js/custom-bard-classes.js',
+        __DIR__.'/../dist/js/nexus-statamic-bard-footnotes.js',
     ];
 
     protected $stylesheets = [
-        __DIR__.'/../dist/css/custom-bard-classes.css'
+        __DIR__.'/../dist/css/nexus-statamic-bard-footnotes.css'
     ];
 
     protected $publishables = [
@@ -22,6 +22,6 @@ class ServiceProvider extends AddonServiceProvider
     public function boot()
     {
         parent::boot();
-        Augmentor::addMark(CustomBardClass::class);
+        Augmentor::addMark(NexusStatamicBardFootnote::class);
     }
 }

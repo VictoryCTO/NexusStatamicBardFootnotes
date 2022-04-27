@@ -1,12 +1,12 @@
 <?php
 
-namespace VictoryCTO\CustomBardClasses;
+namespace VictoryCTO\NexusStatamicBardFootnotes;
 
 use ProseMirrorToHtml\Marks\Mark;
 
-class CustomBardClass extends Mark
+class NexusStatamicBardFootnote extends Mark
 {
-    protected $markType = 'customBardClass';
+    protected $markType = 'nexusStatamicBardFootnote';
     protected $tagName = 'footnote';
 
     public function matching(): bool
@@ -20,8 +20,8 @@ class CustomBardClass extends Mark
             [
                 'tag'   => 'footnote',
                 'attrs' => [
-                    'url' => 'bard-class '.$this->mark->attrs->url,
-                    'text' => 'bard-class '.$this->mark->attrs->text
+                    'target' => $this->mark->attrs->target,
+                    'class' => 'nexus-statamic-bard-footnote '.$this->mark->attrs->value
                 ],
             ],
         ];

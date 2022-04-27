@@ -1,6 +1,6 @@
 const mix = require("laravel-mix");
 
-mix.js("resources/js/bard.js", "dist/js/custom-bard-classes.js")
+mix.js("resources/js/bard.js", "dist/js/nexus-statamic-bard-footnotes.js")
     .vue({version: 2})
     .webpackConfig(require('./webpack.config'))
 

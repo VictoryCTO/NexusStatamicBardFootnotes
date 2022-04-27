@@ -1,6 +1,6 @@
 {
-    "name": "victorycto/custom-bard-classes",
-    "description": "A custom button for Bard to allow footnote tag to be added to selected text.",
+    "name": "victorycto/nexus-statamic-bard-footnotes",
+    "description": "A custom button for Bard to allow footnote tags to be added to selected text.",
     "type": "statamic-addon",
     "keywords": [
         "statamic",
@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "VictoryCTO\\CustomBardClasses\\": "src"
+            "VictoryCTO\\NexusStatamicBardFootnotes\\": "src"
         }
     },
     "license": "MIT",
@@ -28,12 +28,12 @@
     },
     "extra": {
         "statamic": {
-            "name": "Custom Bard Classes",
-            "description": "Custom Class addon for Bard in Statamic 3"
+            "name": "Nexus Statamic Bard Footnotes",
+            "description": "Footnotes addon for Bard in Statamic 3"
         },
         "laravel": {
             "providers": [
-                "VictoryCTO\\CustomBardClasses\\ServiceProvider"
+                "VictoryCTO\\NexusStatamicBardFootnotes\\ServiceProvider"
             ]
         }
     }
