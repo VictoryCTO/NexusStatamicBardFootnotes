@@ -36,10 +36,10 @@ export default class NexusStatamicBardFootnote {
     commands({type, updateMark, removeMark}) {
         return attrs => {
             if (attrs.url || attrs.text) {
-                return updateMark(type, attrs)
+                updateMark(type, attrs)
             }
 
-            return removeMark(type)
+            removeMark(type)
         }
     }
 

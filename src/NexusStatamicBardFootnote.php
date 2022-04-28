@@ -20,8 +20,9 @@ class NexusStatamicBardFootnote extends Mark
             [
                 'tag'   => 'footnote',
                 'attrs' => [
-                    'target' => $this->mark->attrs->target,
-                    'class' => 'nexus-statamic-bard-footnote '.$this->mark->attrs->value
+                    'url' => $this->mark->attrs->url,
+                    'text' => $this->mark->attrs->text,
+                    'class' => 'nexus-statamic-bard-footnote'
                 ],
             ],
         ];

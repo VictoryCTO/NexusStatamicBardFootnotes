@@ -29,6 +29,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   directives: {
@@ -37,14 +55,15 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [BardToolbarButton],
   computed: {
     currentUrl: function currentUrl() {
-      return this.editor.getMarkAttrs('nexusBardFootnote').url;
+      return getMarkAttrs('nexusBardFootnote').url;
     },
     currentText: function currentText() {
-      return this.editor.getMarkAttrs('nexusBardFootnote').text;
+      return getMarkAttrs('nexusBardFootnote').text;
     }
   },
   data: function data() {
     return {
+      getMarkAttrs: this.editor.getMarkAttrs.bind(this.editor),
       showOptions: false
     };
   },
@@ -136,10 +155,10 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function () {
           removeMark = _ref.removeMark;
       return function (attrs) {
         if (attrs.url || attrs.text) {
-          return updateMark(type, attrs);
+          updateMark(type, attrs);
         }
 
-        return removeMark(type);
+        removeMark(type);
       };
     }
   }, {
@@ -192,7 +211,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.footnote-wrapper {\n\n    position: relative;\n\n    display: inline-block\n}\n.footnote-container {\n\n    position: absolute;\n\n    z-index: 10\n}\n.footnote-container > :not([hidden]) ~ :not([hidden]) {\n\n    --tw-divide-y-reverse: 0;\n\n    border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n\n    border-bottom-width: calc(1px * var(--tw-divide-y-reverse));\n\n    --tw-divide-opacity: 1;\n\n    border-color: rgba(243, 244, 246, var(--tw-divide-opacity))\n}\n.footnote-container {\n\n    border-radius: 0.125rem;\n\n    border-width: 1px;\n\n    --tw-border-opacity: 1;\n\n    border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));\n\n    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\n\n    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)\n}\n.footnote-button {\n\n    display: flex;\n\n    width: 100%;\n\n    align-items: center;\n\n    padding-left: 0.75rem;\n\n    padding-right: 0.75rem;\n\n    padding-top: 0.5rem;\n\n    padding-bottom: 0.5rem;\n\n    text-align: left\n}\n.footnote-button:hover {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(243, 244, 246, var(--tw-bg-opacity))\n}\n.footnote-button.active {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(229, 231, 235, var(--tw-bg-opacity))\n}\n.footnote-input {\n}\n.footnote-label {\n\n    display: block;\n\n    white-space: nowrap;\n\n    text-align: left\n}\n.footnote-mark {\n\n    margin-right: 0.75rem;\n\n    display: block;\n\n    height: 1rem;\n\n    width: 1rem;\n\n    flex: none\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fa-footnote:before {\n  content: \"\\f02e\";\n}\n\n\n/*.footnote-wrapper {\n    @apply inline-block relative;\n}\n\n.footnote-container {\n    @apply absolute bg-white border border-gray-300 rounded-sm z-10 divide-y divide-gray-100 shadow-lg;\n}\n\n.footnote-button {\n    @apply text-left px-3 py-2 w-full hover:bg-gray-100 flex items-center;\n}\n\n.footnote-button.active {\n    @apply bg-gray-200;\n}\n\n.footnote-input {\n}\n\n.footnote-label {\n    @apply block text-left whitespace-nowrap;\n}\n\n.footnote-mark {\n    @apply block w-4 h-4 mr-3 flex-none;\n}*/\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -405,7 +424,10 @@ var render = function() {
         }
       ],
       staticClass: "bard-toolbar-button",
-      class: { active: _vm.currentKey || _vm.showOptions },
+      class: {
+        //'active': currentKey || showOptions
+        active: _vm.length(_vm.currentUrl()) >= 1
+      },
       domProps: { innerHTML: _vm._s(_vm.button.html) },
       on: {
         click: function($event) {
@@ -422,66 +444,108 @@ var render = function() {
               {
                 name: "click-outside",
                 rawName: "v-click-outside",
-                value: _vm.closeFootnoteMenu,
-                expression: "closeFootnoteMenu"
+                value: _vm.closeFootnoteMenu(),
+                expression: "closeFootnoteMenu()"
               }
             ],
             staticClass: "footnote-container"
           },
           [
-            _c("div", [
-              _c("span", { staticClass: "footnote-label" }, [_vm._v("URL")]),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.url,
-                    expression: "url"
-                  }
-                ],
-                staticClass: "footnote-input",
-                domProps: { value: _vm.url },
-                on: {
-                  change: function($event) {
-                    return _vm.setFootnoteUrl(_vm.url)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c("div", { staticClass: "px-2 py-2 border-b" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "h-8 mb-2 p-1 border rounded border-grey-50 flex items-center"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.url,
+                        expression: "url"
+                      }
+                    ],
+                    staticClass: "footnote-input input h-auto text-sm",
+                    attrs: { type: "text", placeholder: "URL" },
+                    domProps: { value: _vm.url },
+                    on: {
+                      change: function($event) {
+                        return _vm.setFootnoteUrl(_vm.url)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.url = $event.target.value
+                      }
                     }
-                    _vm.url = $event.target.value
-                  }
-                }
-              })
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "h-8 mb-2 p-1 border rounded border-grey-50 flex items-center"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.text,
+                        expression: "text"
+                      }
+                    ],
+                    staticClass: "footnote-input input h-auto text-sm",
+                    attrs: { type: "text", placeholder: "Text (Optional)" },
+                    domProps: { value: _vm.text },
+                    on: {
+                      change: function($event) {
+                        return _vm.setFootnoteUrl(_vm.text)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.text = $event.target.value
+                      }
+                    }
+                  })
+                ]
+              )
             ]),
             _vm._v(" "),
-            _c("div", [
-              _c("span", { staticClass: "footnote-label" }, [_vm._v("Text")]),
-              _c("textarea", {
-                directives: [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "flex items-center justify-end space-x-1 font-normal px-2 py-1.5"
+              },
+              [
+                _c(
+                  "button",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.text,
-                    expression: "text"
-                  }
-                ],
-                staticClass: "footnote-input",
-                domProps: { value: _vm.text },
-                on: {
-                  change: function($event) {
-                    return _vm.setFootnoteText(_vm.text)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    staticClass: "btn btn-sm has-tooltip",
+                    attrs: {
+                      "aria-label": "Set Footnote",
+                      "data-original-title": "null"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.closeFootnoteMenu()
+                      }
                     }
-                    _vm.text = $event.target.value
-                  }
-                }
-              })
-            ])
+                  },
+                  [_vm._v("\n          OK\n        ")]
+                )
+              ]
+            )
           ]
         )
       : _vm._e()
@@ -985,14 +1049,14 @@ var __webpack_exports__ = {};
   \******************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NexusStatamicBardFootnote__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NexusStatamicBardFootnote */ "./resources/js/NexusStatamicBardFootnote.js");
-/* harmony import */ var _NexusStatamicBardFootnotesMenu_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NexusStatamicBardFootnotesMenu.vue */ "./resources/js/NexusStatamicBardFootnotesMenu.vue");
+/* harmony import */ var _NexusStatamicBardFootnotesMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NexusStatamicBardFootnotesMenu */ "./resources/js/NexusStatamicBardFootnotesMenu.vue");
 
 
 Statamic.$bard.extend(function (_ref) {
   var mark = _ref.mark;
   return mark(new _NexusStatamicBardFootnote__WEBPACK_IMPORTED_MODULE_0__["default"]());
 });
-Statamic.$bard.buttons(function () {
+Statamic.$bard.buttons(function (buttons, button) {
   return {
     name: 'nexusStatamicBardFootnote',
     text: 'Footnote',
@@ -1001,8 +1065,9 @@ Statamic.$bard.buttons(function () {
       url: "",
       text: ""
     },
-    icon: 'bookmark',
-    component: _NexusStatamicBardFootnotesMenu_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    icon: 'footnote',
+    label: 'Footnote',
+    component: _NexusStatamicBardFootnotesMenu__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });
 })();

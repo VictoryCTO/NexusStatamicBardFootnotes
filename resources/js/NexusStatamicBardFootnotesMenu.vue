@@ -2,14 +2,32 @@
     <div class="footnote-wrapper">
         <button
             class="bard-toolbar-button"
-            :class="{ 'active': currentKey || showOptions }"
+            :class="{
+              //'active': currentKey || showOptions
+              active: length( currentUrl() ) >=1,
+            }"
             v-html="button.html"
             v-tooltip="button.text"
             @click="showOptions = !showOptions"
         ></button>
-        <div class="footnote-container" v-if="showOptions" v-click-outside="closeFootnoteMenu">
-          <div><span class="footnote-label">URL</span><input v-model='url' class="footnote-input" @change="setFootnoteUrl(url)"/></div>
-          <div><span class="footnote-label">Text</span><textarea v-model='text' class="footnote-input" @change="setFootnoteText(text)"></textarea></div>
+        <div class="footnote-container" v-if="showOptions" v-click-outside="closeFootnoteMenu()">
+          <div class="px-2 py-2 border-b">
+            <div class="h-8 mb-2 p-1 border rounded border-grey-50 flex items-center">
+              <input type='text' placeholder="URL" v-model='url' class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(url)"/>
+            </div>
+            <div class="h-8 mb-2 p-1 border rounded border-grey-50 flex items-center">
+              <input type='text' placeholder="Text (Optional)" v-model='text' class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(text)"/>
+            </div>
+          </div>
+          <div class="flex items-center justify-end space-x-1 font-normal px-2 py-1.5">
+            <button
+                aria-label="Set Footnote"
+                class="btn btn-sm has-tooltip"
+                data-original-title="null"
+                @click="closeFootnoteMenu()">
+              OK
+            </button>
+          </div>
         </div>
     </div>
 </template>
@@ -23,14 +41,15 @@ export default {
     mixins: [BardToolbarButton],
     computed: {
         currentUrl() {
-            return this.editor.getMarkAttrs('nexusBardFootnote').url;
+            return getMarkAttrs('nexusBardFootnote').url;
         },
         currentText() {
-            return this.editor.getMarkAttrs('nexusBardFootnote').text;
+            return getMarkAttrs('nexusBardFootnote').text;
         }
     },
     data() {
         return {
+            getMarkAttrs: this.editor.getMarkAttrs.bind(this.editor),
             showOptions: false
         };
     },
@@ -57,7 +76,12 @@ export default {
 };
 </script>
 <style lang="postcss">
-.footnote-wrapper {
+.fa-footnote:before {
+  content: "\f02e";
+}
+
+
+/*.footnote-wrapper {
     @apply inline-block relative;
 }
 
@@ -82,5 +106,5 @@ export default {
 
 .footnote-mark {
     @apply block w-4 h-4 mr-3 flex-none;
-}
+}*/
 </style>
