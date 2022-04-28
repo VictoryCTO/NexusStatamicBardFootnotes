@@ -76,8 +76,14 @@ export default {
 };
 </script>
 <style lang="postcss">
+.fa-bookmark:before {
+  content: "\f02e";
+}
 .fa-footnote:before {
   content: "\f02e";
+}
+.fa-hashtag:before {
+  content: "\f292";
 }
 
 

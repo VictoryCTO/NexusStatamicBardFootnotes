@@ -211,7 +211,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.fa-footnote:before {\n  content: \"\\f02e\";\n}\n\n\n/*.footnote-wrapper {\n    @apply inline-block relative;\n}\n\n.footnote-container {\n    @apply absolute bg-white border border-gray-300 rounded-sm z-10 divide-y divide-gray-100 shadow-lg;\n}\n\n.footnote-button {\n    @apply text-left px-3 py-2 w-full hover:bg-gray-100 flex items-center;\n}\n\n.footnote-button.active {\n    @apply bg-gray-200;\n}\n\n.footnote-input {\n}\n\n.footnote-label {\n    @apply block text-left whitespace-nowrap;\n}\n\n.footnote-mark {\n    @apply block w-4 h-4 mr-3 flex-none;\n}*/\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fa-bookmark:before {\n  content: \"\\f02e\";\n}\n.fa-footnote:before {\n  content: \"\\f02e\";\n}\n.fa-hashtag:before {\n  content: \"\\f292\";\n}\n/*.footnote-wrapper {\n    @apply inline-block relative;\n}\n\n.footnote-container {\n    @apply absolute bg-white border border-gray-300 rounded-sm z-10 divide-y divide-gray-100 shadow-lg;\n}\n\n.footnote-button {\n    @apply text-left px-3 py-2 w-full hover:bg-gray-100 flex items-center;\n}\n\n.footnote-button.active {\n    @apply bg-gray-200;\n}\n\n.footnote-input {\n}\n\n.footnote-label {\n    @apply block text-left whitespace-nowrap;\n}\n\n.footnote-mark {\n    @apply block w-4 h-4 mr-3 flex-none;\n}*/\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1056,7 +1056,7 @@ Statamic.$bard.extend(function (_ref) {
   var mark = _ref.mark;
   return mark(new _NexusStatamicBardFootnote__WEBPACK_IMPORTED_MODULE_0__["default"]());
 });
-Statamic.$bard.buttons(function (buttons, button) {
+Statamic.$bard.buttons(function (buttons) {
   return {
     name: 'nexusStatamicBardFootnote',
     text: 'Footnote',
@@ -1065,7 +1065,7 @@ Statamic.$bard.buttons(function (buttons, button) {
       url: "",
       text: ""
     },
-    icon: 'footnote',
+    icon: 'bookmark',
     label: 'Footnote',
     component: _NexusStatamicBardFootnotesMenu__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
