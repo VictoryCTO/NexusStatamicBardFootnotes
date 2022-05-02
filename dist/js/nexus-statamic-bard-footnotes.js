@@ -53,14 +53,7 @@ __webpack_require__.r(__webpack_exports__);
     clickOutside: (v_click_outside__WEBPACK_IMPORTED_MODULE_0___default().directive)
   },
   mixins: [BardToolbarButton],
-  computed: {
-    currentUrl: function currentUrl() {
-      return this.editor.getMarkAttrs('nexusBardFootnote').url;
-    },
-    currentText: function currentText() {
-      return this.editor.getMarkAttrs('nexusBardFootnote').text;
-    }
-  },
+  computed: {},
   data: function data() {
     return {
       showOptions: false
@@ -71,17 +64,23 @@ __webpack_require__.r(__webpack_exports__);
       // close the menu
       this.showOptions = false;
     },
+    currentUrl: function currentUrl() {
+      return this.editor.getMarkAttrs('nexusBardFootnote').url;
+    },
+    currentText: function currentText() {
+      return this.editor.getMarkAttrs('nexusBardFootnote').text;
+    },
     setFootnoteUrl: function setFootnoteUrl(val) {
       // update the editor
       this.editor.commands.nexusStatamicBardFootnote({
-        url: val //text: this.currentText,
-
+        url: val,
+        text: this.currentText()
       });
     },
     setFootnoteText: function setFootnoteText(val) {
       // update the editor
       this.editor.commands.nexusStatamicBardFootnote({
-        //url: this.currentUrl,
+        url: this.currentUrl(),
         text: val
       });
     }
@@ -152,12 +151,15 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function () {
       var type = _ref.type,
           updateMark = _ref.updateMark,
           removeMark = _ref.removeMark;
-      return function (attrs) {
-        if (attrs.url || attrs.text) {
-          updateMark(type, attrs);
-        }
 
-        removeMark(type);
+      if (attrs.url || attrs.text) {
+        return function (attrs) {
+          return updateMark(type, attrs);
+        };
+      }
+
+      return function (attrs) {
+        return removeMark(type);
       };
     }
   }, {
@@ -1111,15 +1113,14 @@ Statamic.$bard.extend(function (_ref) {
 });
 Statamic.$bard.buttons(function (buttons) {
   return {
-    name: 'nexusStatamicBardFootnote',
+    name: 'footnote',
     text: 'Footnote',
-    command: 'statamicBardFootnote',
+    command: 'nexusStatamicBardFootnote',
     args: {
       url: "",
       text: ""
     },
     icon: 'bookmark',
-    label: 'Footnote',
     component: _NexusStatamicBardFootnotesMenu__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });

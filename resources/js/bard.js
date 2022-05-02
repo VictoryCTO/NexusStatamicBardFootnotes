@@ -4,15 +4,14 @@ import NexusStatamicBardFootnotesMenu from "./NexusStatamicBardFootnotesMenu";
 Statamic.$bard.extend(({mark}) => mark(new NexusStatamicBardFootnote()));
 Statamic.$bard.buttons((buttons) => {
     return {
-        name: 'nexusStatamicBardFootnote',
+        name: 'footnote',
         text: 'Footnote',
-        command: 'statamicBardFootnote',
+        command: 'nexusStatamicBardFootnote',
         args: {
             url: "",
             text: "",
         },
         icon: 'bookmark',
-        label: 'Footnote',
         component: NexusStatamicBardFootnotesMenu
     };
 });

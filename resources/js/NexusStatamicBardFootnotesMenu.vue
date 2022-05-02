@@ -40,12 +40,6 @@ export default {
     },
     mixins: [BardToolbarButton],
     computed: {
-        currentUrl() {
-            return this.editor.getMarkAttrs('nexusBardFootnote').url;
-        },
-        currentText() {
-            return this.editor.getMarkAttrs('nexusBardFootnote').text;
-        }
     },
     data() {
         return {
@@ -57,17 +51,23 @@ export default {
             // close the menu
             this.showOptions = false;
         },
+        currentUrl() {
+            return this.editor.getMarkAttrs('nexusBardFootnote').url;
+        },
+        currentText() {
+            return this.editor.getMarkAttrs('nexusBardFootnote').text;
+        },
         setFootnoteUrl(val) {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
                 url: val,
-                //text: this.currentText,
+                text: this.currentText(),
             })
         },
         setFootnoteText(val) {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
-                //url: this.currentUrl,
+                url: this.currentUrl(),
                 text: val,
             })
         },
