@@ -55,15 +55,14 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [BardToolbarButton],
   computed: {
     currentUrl: function currentUrl() {
-      return getMarkAttrs('nexusBardFootnote').url;
+      return this.editor.getMarkAttrs('nexusBardFootnote').url;
     },
     currentText: function currentText() {
-      return getMarkAttrs('nexusBardFootnote').text;
+      return this.editor.getMarkAttrs('nexusBardFootnote').text;
     }
   },
   data: function data() {
     return {
-      getMarkAttrs: this.editor.getMarkAttrs.bind(this.editor),
       showOptions: false
     };
   },
@@ -205,11 +204,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/noSourceMaps.js */ "./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.fa-bookmark:before {\n  content: \"\\f02e\";\n}\n.fa-footnote:before {\n  content: \"\\f02e\";\n}\n.fa-hashtag:before {\n  content: \"\\f292\";\n}\n/*.footnote-wrapper {\n    @apply inline-block relative;\n}\n\n.footnote-container {\n    @apply absolute bg-white border border-gray-300 rounded-sm z-10 divide-y divide-gray-100 shadow-lg;\n}\n\n.footnote-button {\n    @apply text-left px-3 py-2 w-full hover:bg-gray-100 flex items-center;\n}\n\n.footnote-button.active {\n    @apply bg-gray-200;\n}\n\n.footnote-input {\n}\n\n.footnote-label {\n    @apply block text-left whitespace-nowrap;\n}\n\n.footnote-mark {\n    @apply block w-4 h-4 mr-3 flex-none;\n}*/\n", ""]);
 // Exports
@@ -231,37 +233,55 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.fa-bookmark:before {\n  content: \"
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
 */
-// css base code, injected by the css-loader
-// eslint-disable-next-line func-names
 module.exports = function (cssWithMappingToString) {
   var list = []; // return the list of modules as css string
 
   list.toString = function toString() {
     return this.map(function (item) {
-      var content = cssWithMappingToString(item);
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
 
       if (item[2]) {
-        return "@media ".concat(item[2], " {").concat(content, "}");
+        content += "@media ".concat(item[2], " {");
+      }
+
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+
+      content += cssWithMappingToString(item);
+
+      if (needLayer) {
+        content += "}";
+      }
+
+      if (item[2]) {
+        content += "}";
+      }
+
+      if (item[4]) {
+        content += "}";
       }
 
       return content;
     }).join("");
   }; // import a list of modules into the list
-  // eslint-disable-next-line func-names
 
 
-  list.i = function (modules, mediaQuery, dedupe) {
+  list.i = function i(modules, media, dedupe, supports, layer) {
     if (typeof modules === "string") {
-      // eslint-disable-next-line no-param-reassign
-      modules = [[null, modules, ""]];
+      modules = [[null, modules, undefined]];
     }
 
     var alreadyImportedModules = {};
 
     if (dedupe) {
-      for (var i = 0; i < this.length; i++) {
-        // eslint-disable-next-line prefer-destructuring
-        var id = this[i][0];
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
 
         if (id != null) {
           alreadyImportedModules[id] = true;
@@ -269,19 +289,37 @@ module.exports = function (cssWithMappingToString) {
       }
     }
 
-    for (var _i = 0; _i < modules.length; _i++) {
-      var item = [].concat(modules[_i]);
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
 
       if (dedupe && alreadyImportedModules[item[0]]) {
-        // eslint-disable-next-line no-continue
         continue;
       }
 
-      if (mediaQuery) {
-        if (!item[2]) {
-          item[2] = mediaQuery;
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
         } else {
-          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
         }
       }
 
@@ -290,6 +328,21 @@ module.exports = function (cssWithMappingToString) {
   };
 
   return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/noSourceMaps.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/noSourceMaps.js ***!
+  \**************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (i) {
+  return i[1];
 };
 
 /***/ }),
@@ -409,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function() {
+var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -420,20 +473,20 @@ var render = function() {
           name: "tooltip",
           rawName: "v-tooltip",
           value: _vm.button.text,
-          expression: "button.text"
-        }
+          expression: "button.text",
+        },
       ],
       staticClass: "bard-toolbar-button",
       class: {
         //'active': currentKey || showOptions
-        active: _vm.length(_vm.currentUrl()) >= 1
+        active: _vm.length(_vm.currentUrl()) >= 1,
       },
       domProps: { innerHTML: _vm._s(_vm.button.html) },
       on: {
-        click: function($event) {
+        click: function ($event) {
           _vm.showOptions = !_vm.showOptions
-        }
-      }
+        },
+      },
     }),
     _vm._v(" "),
     _vm.showOptions
@@ -445,10 +498,10 @@ var render = function() {
                 name: "click-outside",
                 rawName: "v-click-outside",
                 value: _vm.closeFootnoteMenu(),
-                expression: "closeFootnoteMenu()"
-              }
+                expression: "closeFootnoteMenu()",
+              },
             ],
-            staticClass: "footnote-container"
+            staticClass: "footnote-container",
           },
           [
             _c("div", { staticClass: "px-2 py-2 border-b" }, [
@@ -456,7 +509,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "h-8 mb-2 p-1 border rounded border-grey-50 flex items-center"
+                    "h-8 mb-2 p-1 border rounded border-grey-50 flex items-center",
                 },
                 [
                   _c("input", {
@@ -465,24 +518,24 @@ var render = function() {
                         name: "model",
                         rawName: "v-model",
                         value: _vm.url,
-                        expression: "url"
-                      }
+                        expression: "url",
+                      },
                     ],
                     staticClass: "footnote-input input h-auto text-sm",
                     attrs: { type: "text", placeholder: "URL" },
                     domProps: { value: _vm.url },
                     on: {
-                      change: function($event) {
+                      change: function ($event) {
                         return _vm.setFootnoteUrl(_vm.url)
                       },
-                      input: function($event) {
+                      input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.url = $event.target.value
-                      }
-                    }
-                  })
+                      },
+                    },
+                  }),
                 ]
               ),
               _vm._v(" "),
@@ -490,7 +543,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "h-8 mb-2 p-1 border rounded border-grey-50 flex items-center"
+                    "h-8 mb-2 p-1 border rounded border-grey-50 flex items-center",
                 },
                 [
                   _c("input", {
@@ -499,33 +552,33 @@ var render = function() {
                         name: "model",
                         rawName: "v-model",
                         value: _vm.text,
-                        expression: "text"
-                      }
+                        expression: "text",
+                      },
                     ],
                     staticClass: "footnote-input input h-auto text-sm",
                     attrs: { type: "text", placeholder: "Text (Optional)" },
                     domProps: { value: _vm.text },
                     on: {
-                      change: function($event) {
+                      change: function ($event) {
                         return _vm.setFootnoteUrl(_vm.text)
                       },
-                      input: function($event) {
+                      input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.text = $event.target.value
-                      }
-                    }
-                  })
+                      },
+                    },
+                  }),
                 ]
-              )
+              ),
             ]),
             _vm._v(" "),
             _c(
               "div",
               {
                 staticClass:
-                  "flex items-center justify-end space-x-1 font-normal px-2 py-1.5"
+                  "flex items-center justify-end space-x-1 font-normal px-2 py-1.5",
               },
               [
                 _c(
@@ -534,21 +587,21 @@ var render = function() {
                     staticClass: "btn btn-sm has-tooltip",
                     attrs: {
                       "aria-label": "Set Footnote",
-                      "data-original-title": "null"
+                      "data-original-title": "null",
                     },
                     on: {
-                      click: function($event) {
+                      click: function ($event) {
                         return _vm.closeFootnoteMenu()
-                      }
-                    }
+                      },
+                    },
                   },
                   [_vm._v("\n          OK\n        ")]
-                )
+                ),
               ]
-            )
+            ),
           ]
         )
-      : _vm._e()
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

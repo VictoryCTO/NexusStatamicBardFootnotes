@@ -41,15 +41,14 @@ export default {
     mixins: [BardToolbarButton],
     computed: {
         currentUrl() {
-            return getMarkAttrs('nexusBardFootnote').url;
+            return this.editor.getMarkAttrs('nexusBardFootnote').url;
         },
         currentText() {
-            return getMarkAttrs('nexusBardFootnote').text;
+            return this.editor.getMarkAttrs('nexusBardFootnote').text;
         }
     },
     data() {
         return {
-            getMarkAttrs: this.editor.getMarkAttrs.bind(this.editor),
             showOptions: false
         };
     },
