@@ -151,14 +151,11 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function () {
       var type = _ref.type,
           updateMark = _ref.updateMark,
           removeMark = _ref.removeMark;
-
-      if (attrs.url || attrs.text) {
-        return function (attrs) {
-          return updateMark(type, attrs);
-        };
-      }
-
       return function (attrs) {
+        if (attrs.url || attrs.text) {
+          return updateMark(type, attrs);
+        }
+
         return removeMark(type);
       };
     }

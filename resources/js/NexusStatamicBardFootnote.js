@@ -34,11 +34,13 @@ export default class NexusStatamicBardFootnote {
     }
 
     commands({type, updateMark, removeMark}) {
-        if (attrs.url || attrs.text) {
-            return (attrs) => updateMark(type, attrs);
-        }
+        return attrs => {
+            if (attrs.url || attrs.text) {
+                return updateMark(type, attrs)
+            }
 
-        return (attrs) => removeMark(type);
+            return removeMark(type)
+        }
     }
 
     inputRules({type}) {
