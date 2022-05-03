@@ -67,10 +67,10 @@ __webpack_require__.r(__webpack_exports__);
       this.showOptions = false;
     },
     currentUrl: function currentUrl() {
-      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusBardFootnote').url;
+      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusStatamicBardFootnote').url;
     },
     currentText: function currentText() {
-      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusBardFootnote').text;
+      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusStatamicBardFootnote').text;
     },
     setFootnoteUrl: function setFootnoteUrl(val) {
       // update the editor
