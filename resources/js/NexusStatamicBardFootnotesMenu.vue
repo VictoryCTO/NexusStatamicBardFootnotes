@@ -60,13 +60,13 @@ export default {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
                 url: val,
-                text: this.currentText(),
+                text: currentText,
             })
         },
         setFootnoteText(val) {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
-                url: this.currentUrl(),
+                url: currentUrl,
                 text: val,
             })
         },
@@ -85,7 +85,7 @@ export default {
 }
 
 
-/*.footnote-wrapper {
+.footnote-wrapper {
     @apply inline-block relative;
 }
 
@@ -110,5 +110,5 @@ export default {
 
 .footnote-mark {
     @apply block w-4 h-4 mr-3 flex-none;
-}*/
+}
 </style>
