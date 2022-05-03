@@ -54,10 +54,10 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [BardToolbarButton],
   computed: {
     currentUrl: function currentUrl() {
-      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url;
+      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url || false;
     },
     currentText: function currentText() {
-      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text;
+      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text || '';
     }
   },
   data: function data() {
@@ -177,7 +177,7 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function (_Mark) {
     value: function commands(_ref) {
       var type = _ref.type;
       return function (attrs) {
-        if (attrs.url || attrs.text) {
+        if (attrs.url) {
           return (0,tiptap_commands__WEBPACK_IMPORTED_MODULE_1__.updateMark)(type, attrs);
         }
 

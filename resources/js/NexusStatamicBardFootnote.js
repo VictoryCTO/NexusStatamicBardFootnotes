@@ -38,7 +38,7 @@ export default class NexusStatamicBardFootnote extends Mark {
 
     commands({type}) {
         return attrs => {
-            if (attrs.url || attrs.text) {
+            if (attrs.url) {
                 return updateMark(type, attrs)
             }
 

@@ -40,10 +40,10 @@ export default {
     mixins: [BardToolbarButton],
     computed: {
       currentUrl() {
-        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url;
+        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url || false ;
       },
       currentText() {
-        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text;
+        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text || '' ;
       }
     },
     data() {
