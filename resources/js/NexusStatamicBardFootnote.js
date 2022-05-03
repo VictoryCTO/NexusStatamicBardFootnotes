@@ -1,4 +1,7 @@
-export default class NexusStatamicBardFootnote {
+import { Mark } from 'tiptap'
+import { updateMark, removeMark } from 'tiptap-commands'
+
+export default class NexusStatamicBardFootnote extends Mark {
     name() {
         return "nexusStatamicBardFootnote";
     }
@@ -33,7 +36,7 @@ export default class NexusStatamicBardFootnote {
         };
     }
 
-    commands({type, updateMark, removeMark}) {
+    commands({type}) {
         return attrs => {
             if (attrs.url || attrs.text) {
                 return updateMark(type, attrs)
