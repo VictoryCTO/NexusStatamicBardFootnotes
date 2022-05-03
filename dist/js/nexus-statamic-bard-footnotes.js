@@ -29754,7 +29754,7 @@ Statamic.$bard.buttons(function (buttons) {
       url: "",
       text: ""
     },
-    icon: 'bookmark',
+    //icon: 'bookmark',
     component: _NexusStatamicBardFootnotesMenu__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });
