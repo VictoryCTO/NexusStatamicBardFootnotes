@@ -60,13 +60,13 @@ export default {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
                 url: val,
-                text: currentText,
+                text: currentText || '',
             })
         },
         setFootnoteText(val) {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
-                url: currentUrl,
+                url: currentUrl || '',
                 text: val,
             })
         },

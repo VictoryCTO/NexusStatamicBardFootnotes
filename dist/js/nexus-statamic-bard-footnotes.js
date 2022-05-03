@@ -74,13 +74,13 @@ __webpack_require__.r(__webpack_exports__);
       // update the editor
       this.editor.commands.nexusStatamicBardFootnote({
         url: val,
-        text: currentText
+        text: currentText || ''
       });
     },
     setFootnoteText: function setFootnoteText(val) {
       // update the editor
       this.editor.commands.nexusStatamicBardFootnote({
-        url: currentUrl,
+        url: currentUrl || '',
         text: val
       });
     }
