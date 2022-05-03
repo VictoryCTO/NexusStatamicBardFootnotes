@@ -16936,8 +16936,8 @@ var render = function () {
               {
                 name: "click-outside",
                 rawName: "v-click-outside",
-                value: _vm.closeFootnoteMenu(),
-                expression: "closeFootnoteMenu()",
+                value: _vm.closeFootnoteMenu,
+                expression: "closeFootnoteMenu",
               },
             ],
             staticClass: "footnote-container",
