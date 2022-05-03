@@ -53,10 +53,10 @@ export default {
             this.showOptions = false;
         },
         currentUrl() {
-            return getMarkAttrs('nexusBardFootnote').url;
+            return this.editor.getMarkAttrs('nexusBardFootnote').url;
         },
         currentText() {
-            return getMarkAttrs('nexusBardFootnote').text;
+            return this.editor.getMarkAttrs('nexusBardFootnote').text;
         },
         setFootnoteUrl(val) {
             // update the editor
