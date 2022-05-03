@@ -3,8 +3,7 @@
         <button
             class="bard-toolbar-button"
             :class="{
-              //'active': currentKey || showOptions
-              active: length( currentUrl() ) >=1,
+              'active': currentUrl || showOptions,
             }"
             v-html="button.html"
             v-tooltip="button.text"
@@ -40,6 +39,12 @@ export default {
     },
     mixins: [BardToolbarButton],
     computed: {
+      currentUrl() {
+        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url;
+      },
+      currentText() {
+        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text;
+      }
     },
     data() {
         return {
@@ -50,12 +55,6 @@ export default {
         closeFootnoteMenu() {
             // close the menu
             this.showOptions = false;
-        },
-        currentUrl() {
-            return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url;
-        },
-        currentText() {
-            return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text;
         },
         setFootnoteUrl(val) {
             // update the editor

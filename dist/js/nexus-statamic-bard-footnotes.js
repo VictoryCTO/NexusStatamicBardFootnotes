@@ -46,14 +46,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   directives: {
     clickOutside: (v_click_outside__WEBPACK_IMPORTED_MODULE_0___default().directive)
   },
   mixins: [BardToolbarButton],
-  computed: {},
+  computed: {
+    currentUrl: function currentUrl() {
+      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url;
+    },
+    currentText: function currentText() {
+      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text;
+    }
+  },
   data: function data() {
     return {
       showOptions: false
@@ -63,12 +69,6 @@ __webpack_require__.r(__webpack_exports__);
     closeFootnoteMenu: function closeFootnoteMenu() {
       // close the menu
       this.showOptions = false;
-    },
-    currentUrl: function currentUrl() {
-      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url;
-    },
-    currentText: function currentText() {
-      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text;
     },
     setFootnoteUrl: function setFootnoteUrl(val) {
       // update the editor
@@ -16918,8 +16918,7 @@ var render = function () {
       ],
       staticClass: "bard-toolbar-button",
       class: {
-        //'active': currentKey || showOptions
-        active: _vm.length(_vm.currentUrl()) >= 1,
+        active: _vm.currentUrl || _vm.showOptions,
       },
       domProps: { innerHTML: _vm._s(_vm.button.html) },
       on: {
