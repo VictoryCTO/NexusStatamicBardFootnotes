@@ -12,9 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tiptap_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tiptap-utils */ "./node_modules/tiptap-utils/dist/utils.esm.js");
-/* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! v-click-outside */ "./node_modules/v-click-outside/dist/v-click-outside.umd.js");
-/* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(v_click_outside__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! v-click-outside */ "./node_modules/v-click-outside/dist/v-click-outside.umd.js");
+/* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(v_click_outside__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -48,11 +47,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   directives: {
-    clickOutside: (v_click_outside__WEBPACK_IMPORTED_MODULE_1___default().directive)
+    clickOutside: (v_click_outside__WEBPACK_IMPORTED_MODULE_0___default().directive)
   },
   mixins: [BardToolbarButton],
   computed: {},
@@ -67,10 +65,10 @@ __webpack_require__.r(__webpack_exports__);
       this.showOptions = false;
     },
     currentUrl: function currentUrl() {
-      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusStatamicBardFootnote').url;
+      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url;
     },
     currentText: function currentText() {
-      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusStatamicBardFootnote').text;
+      return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text;
     },
     setFootnoteUrl: function setFootnoteUrl(val) {
       // update the editor
