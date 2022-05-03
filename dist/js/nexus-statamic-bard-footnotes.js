@@ -67,10 +67,10 @@ __webpack_require__.r(__webpack_exports__);
       this.showOptions = false;
     },
     currentUrl: function currentUrl() {
-      return this.editor.getMarkAttrs('nexusBardFootnote').url;
+      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusBardFootnote').url;
     },
     currentText: function currentText() {
-      return this.editor.getMarkAttrs('nexusBardFootnote').text;
+      return (0,tiptap_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('nexusBardFootnote').text;
     },
     setFootnoteUrl: function setFootnoteUrl(val) {
       // update the editor

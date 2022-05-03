@@ -32,7 +32,7 @@
     </div>
 </template>
 <script>
-import { getMarkAttrs } from 'tiptap-utils'
+import getMarkAttrs from 'tiptap-utils'
 import vClickOutside from 'v-click-outside'
 
 export default {
@@ -53,10 +53,10 @@ export default {
             this.showOptions = false;
         },
         currentUrl() {
-            return this.editor.getMarkAttrs('nexusBardFootnote').url;
+            return getMarkAttrs('nexusBardFootnote').url;
         },
         currentText() {
-            return this.editor.getMarkAttrs('nexusBardFootnote').text;
+            return getMarkAttrs('nexusBardFootnote').text;
         },
         setFootnoteUrl(val) {
             // update the editor
