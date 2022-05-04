@@ -74,6 +74,12 @@ export default {
 };
 </script>
 <style lang="postcss">
+.fa-bookmark:before,
+.fa-hashtag:before,
+.fa-footnote:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
 .fa-bookmark:before {
   content: "\f02e";
 }
