@@ -2,7 +2,7 @@ import NexusStatamicBardFootnote from "./NexusStatamicBardFootnote";
 import NexusStatamicBardFootnotesMenu from "./NexusStatamicBardFootnotesMenu";
 
 Statamic.$bard.extend(({mark}) => mark(new NexusStatamicBardFootnote()));
-Statamic.$bard.buttons((buttons) => {
+Statamic.$bard.buttons((buttons, button) => {
     return {
         name: 'footnote',
         text: 'Footnote',
@@ -11,7 +11,7 @@ Statamic.$bard.buttons((buttons) => {
             url: "",
             text: "",
         },
-        //icon: 'bookmark',
+        icon: 'bookmark',
         component: NexusStatamicBardFootnotesMenu
     };
 });

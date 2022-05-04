@@ -9,12 +9,8 @@ export default class NexusStatamicBardFootnote extends Mark {
     schema() {
         return {
             attrs: {
-                url: {
-                    default: null,
-                },
-                text: {
-                    default: null,
-                },
+                url: '',
+                text: '',
             },
             parseDOM: [
                 {

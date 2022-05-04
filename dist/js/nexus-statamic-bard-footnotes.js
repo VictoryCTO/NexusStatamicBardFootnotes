@@ -148,12 +148,8 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function (_Mark) {
     value: function schema() {
       return {
         attrs: {
-          url: {
-            "default": null
-          },
-          text: {
-            "default": null
-          }
+          url: '',
+          text: ''
         },
         parseDOM: [{
           tag: "footnote",
@@ -29745,7 +29741,7 @@ Statamic.$bard.extend(function (_ref) {
   var mark = _ref.mark;
   return mark(new _NexusStatamicBardFootnote__WEBPACK_IMPORTED_MODULE_0__["default"]());
 });
-Statamic.$bard.buttons(function (buttons) {
+Statamic.$bard.buttons(function (buttons, button) {
   return {
     name: 'footnote',
     text: 'Footnote',
@@ -29754,7 +29750,7 @@ Statamic.$bard.buttons(function (buttons) {
       url: "",
       text: ""
     },
-    //icon: 'bookmark',
+    icon: 'bookmark',
     component: _NexusStatamicBardFootnotesMenu__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });
