@@ -81,13 +81,13 @@ export default {
   font-weight: 900;
 }
 .fa-bookmark:before {
-  content: "\f02e";
+  content: '\f02e';
 }
 .fa-footnote:before {
-  content: "\f02e";
+  content: '\f02e';
 }
 .fa-hashtag:before {
-  content: "\f292";
+  content: '\f292';
 }
 
 
