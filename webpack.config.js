@@ -15,7 +15,12 @@ module.exports = {
                     {loader: 'css-loader', options: {importLoaders: 1}},
                     'postcss-loader'
                 ]
-            }
+            },
+            {
+                test: /\.js$/,
+                enforce: "pre",
+                use: ["source-map-loader"],
+            },
         ]
     }
 }
