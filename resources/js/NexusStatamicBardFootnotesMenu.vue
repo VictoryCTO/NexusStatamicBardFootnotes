@@ -31,9 +31,7 @@
     </div>
 </template>
 <script>
-import Vue from "vue";
 import vClickOutside from 'v-click-outside';
-Vue.use(vClickOutside);
 
 export default {
     directives: {
@@ -62,13 +60,13 @@ export default {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
                 url: val,
-                text: currentText || '',
+                text: this.currentText,
             })
         },
         setFootnoteText(val) {
             // update the editor
             this.editor.commands.nexusStatamicBardFootnote({
-                url: currentUrl || '',
+                url: this.currentUrl,
                 text: val,
             })
         },

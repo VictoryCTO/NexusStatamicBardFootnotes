@@ -136,7 +136,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! v-click-outside */ "./node_modules/v-click-outside/dist/v-click-outside.umd.js");
 /* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(v_click_outside__WEBPACK_IMPORTED_MODULE_0__);
 //
@@ -172,8 +171,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-
-vue__WEBPACK_IMPORTED_MODULE_1__["default"].use((v_click_outside__WEBPACK_IMPORTED_MODULE_0___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   directives: {
     clickOutside: (v_click_outside__WEBPACK_IMPORTED_MODULE_0___default().directive)
@@ -201,13 +198,13 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use((v_click_outside__WEBPACK_IMPORT
       // update the editor
       this.editor.commands.nexusStatamicBardFootnote({
         url: val,
-        text: currentText || ''
+        text: this.currentText
       });
     },
     setFootnoteText: function setFootnoteText(val) {
       // update the editor
       this.editor.commands.nexusStatamicBardFootnote({
-        url: currentUrl || '',
+        url: this.currentUrl,
         text: val
       });
     }
