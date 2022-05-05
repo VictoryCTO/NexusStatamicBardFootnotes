@@ -12,10 +12,10 @@
         <div class="footnote-container" v-if="showOptions" v-click-outside="closeFootnoteMenu">
           <div class="px-2 py-2 border-b">
             <div class="h-8 mb-2 p-1 border rounded border-grey-50 flex items-center">
-              <input type='text' placeholder="URL" v-model='url' class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(url)"/>
+              <input type='text' name="url" placeholder="URL" class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(url)"/>
             </div>
             <div class="h-8 mb-2 p-1 border rounded border-grey-50 flex items-center">
-              <input type='text' placeholder="Text (Optional)" v-model='text' class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(text)"/>
+              <input type='text' name="text" placeholder="Text (Optional)" class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(text)"/>
             </div>
           </div>
           <div class="flex items-center justify-end space-x-1 font-normal px-2 py-1.5">

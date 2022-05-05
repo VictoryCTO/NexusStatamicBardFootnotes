@@ -60,8 +60,12 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function (_Mark) {
     value: function schema() {
       return {
         attrs: {
-          url: '',
-          text: ''
+          url: {
+            "default": ''
+          },
+          text: {
+            "default": ''
+          }
         },
         parseDOM: [{
           tag: "footnote",
@@ -29374,26 +29378,11 @@ var render = function () {
                 },
                 [
                   _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.url,
-                        expression: "url",
-                      },
-                    ],
                     staticClass: "footnote-input input h-auto text-sm",
-                    attrs: { type: "text", placeholder: "URL" },
-                    domProps: { value: _vm.url },
+                    attrs: { type: "text", name: "url", placeholder: "URL" },
                     on: {
                       change: function ($event) {
                         return _vm.setFootnoteUrl(_vm.url)
-                      },
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.url = $event.target.value
                       },
                     },
                   }),
@@ -29408,26 +29397,15 @@ var render = function () {
                 },
                 [
                   _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.text,
-                        expression: "text",
-                      },
-                    ],
                     staticClass: "footnote-input input h-auto text-sm",
-                    attrs: { type: "text", placeholder: "Text (Optional)" },
-                    domProps: { value: _vm.text },
+                    attrs: {
+                      type: "text",
+                      name: "text",
+                      placeholder: "Text (Optional)",
+                    },
                     on: {
                       change: function ($event) {
                         return _vm.setFootnoteUrl(_vm.text)
-                      },
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.text = $event.target.value
                       },
                     },
                   }),
