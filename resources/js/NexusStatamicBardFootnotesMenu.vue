@@ -7,15 +7,15 @@
             }"
             v-html="button.html"
             v-tooltip="button.text"
-            @click="showOptions = !showOptions"
+            @click="updateShowOptions"
         ></button>
         <div class="footnote-container" v-if="showOptions" v-click-outside="closeFootnoteMenu">
           <div class="px-2 py-2 border-b">
             <div class="h-8 mb-2 p-1 border rounded border-grey-50 flex items-center">
-              <input type='text' name="url" placeholder="URL" class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(url)"/>
+              <input type='text' id="url" v-model.lazy='url' placeholder="URL" class="footnote-input input h-auto text-sm"/>
             </div>
             <div class="h-8 mb-2 p-1 border rounded border-grey-50 flex items-center">
-              <input type='text' name="text" placeholder="Text (Optional)" class="footnote-input input h-auto text-sm" @change="setFootnoteUrl(text)"/>
+              <input type='text' name="text" v-model.lazy='text' placeholder="Text (Optional)" class="footnote-input input h-auto text-sm"/>
             </div>
           </div>
           <div class="flex items-center justify-end space-x-1 font-normal px-2 py-1.5">
@@ -23,7 +23,7 @@
                 aria-label="Set Footnote"
                 class="btn btn-sm has-tooltip"
                 data-original-title="null"
-                @click="closeFootnoteMenu()">
+                @click="closeFootnoteMenu">
               OK
             </button>
           </div>
@@ -40,7 +40,7 @@ export default {
     mixins: [BardToolbarButton],
     computed: {
       currentUrl() {
-        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url || false ;
+        return this.editor.getMarkAttrs('nexusStatamicBardFootnote').url || '' ;
       },
       currentText() {
         return this.editor.getMarkAttrs('nexusStatamicBardFootnote').text || '' ;
@@ -52,9 +52,23 @@ export default {
         };
     },
     methods: {
+        updateShowOptions() {
+            this.showOptions = !this.showOptions;
+            this.url = this.currentUrl;
+            this.text = this.currentText;
+        },
         closeFootnoteMenu() {
+            //make sure data is saved
+            this.setFootnote();
             // close the menu
             this.showOptions = false;
+        },
+        setFootnote() {
+            // update the editor
+            this.editor.commands.nexusStatamicBardFootnote({
+                url: this.url,
+                text: this.text,
+            })
         },
         setFootnoteUrl(val) {
             // update the editor
