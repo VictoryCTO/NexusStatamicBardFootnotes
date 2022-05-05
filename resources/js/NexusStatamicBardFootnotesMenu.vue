@@ -70,20 +70,6 @@ export default {
                 text: this.text,
             })
         },
-        setFootnoteUrl(val) {
-            // update the editor
-            this.editor.commands.nexusStatamicBardFootnote({
-                url: val,
-                text: this.currentText,
-            })
-        },
-        setFootnoteText(val) {
-            // update the editor
-            this.editor.commands.nexusStatamicBardFootnote({
-                url: this.currentUrl,
-                text: val,
-            })
-        },
     }
 };
 </script>
