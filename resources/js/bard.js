@@ -11,7 +11,7 @@ Statamic.$bard.buttons((buttons, button) => {
             url: "",
             text: "",
         },
-        icon: 'bookmark',
+        icon: 'quote-right',
         component: NexusStatamicBardFootnotesMenu
     };
 });
