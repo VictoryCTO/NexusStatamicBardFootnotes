@@ -43,6 +43,6 @@ footnote:after {
     visibility: visible;
     vertical-align: super;
     font-size: smaller;
-    content: '#footnote';
+    content: '#';
 
 }
