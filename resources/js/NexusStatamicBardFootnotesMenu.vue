@@ -39,6 +39,7 @@
 </template>
 <script>
 import vClickOutside from 'v-click-outside';
+import { TextSelection } from 'prosemirror-state';
 
 export default {
     directives: {
@@ -70,17 +71,22 @@ export default {
       manipulateSelection() {
         //get the current selection
         const currentSelection = this.editor.view.state.selection;
-        console.log('currentSelection:'+currentSelection);
+        console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
+        console.log('currentSelection text:'+currentSelection.text);
+        console.log('currentSelection content:'+currentSelection.content);
+        console.log('currentSelection json:'+currentSelection.toJSON);
         //is the selection empty or is the selection just the hashtag
-        if( currentSelection.empty || currentSelection.text==='#' ) {
+        if( currentSelection.empty || currentSelection.content==='#' ) {
           return true;
         //otherwise move the cursor to the end of the selection
         } else {
-          const { from, to } = currentSelection;
+          const { view, state } = this.editor
+          //const endPos = currentSelection.to;
+          const endPos = state.doc.resolve(currentSelection.to);
 
           //const markPos = this.editor.commands.getMarkPos();
           //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
-          this.editor.commands.setTextSelection(to);
+          this.editor.commands.setSelection( new TextSelection(endPos, endPos));
           return true;
         }
       },

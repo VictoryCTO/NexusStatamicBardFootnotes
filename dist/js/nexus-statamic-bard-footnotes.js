@@ -144,6 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! v-click-outside */ "./node_modules/v-click-outside/dist/v-click-outside.umd.js");
 /* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(v_click_outside__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
 //
 //
 //
@@ -183,6 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   directives: {
@@ -214,16 +216,22 @@ __webpack_require__.r(__webpack_exports__);
     manipulateSelection: function manipulateSelection() {
       //get the current selection
       var currentSelection = this.editor.view.state.selection;
-      console.log('currentSelection:' + currentSelection); //is the selection empty or is the selection just the hashtag
+      console.log('currentSelection from:' + currentSelection.from + ' to:' + currentSelection.to);
+      console.log('currentSelection text:' + currentSelection.text);
+      console.log('currentSelection content:' + currentSelection.content);
+      console.log('currentSelection json:' + currentSelection.toJSON); //is the selection empty or is the selection just the hashtag
 
-      if (currentSelection.empty || currentSelection.text === '#') {
+      if (currentSelection.empty || currentSelection.content === '#') {
         return true; //otherwise move the cursor to the end of the selection
       } else {
-        var from = currentSelection.from,
-            to = currentSelection.to; //const markPos = this.editor.commands.getMarkPos();
+        var _this$editor = this.editor,
+            view = _this$editor.view,
+            state = _this$editor.state; //const endPos = currentSelection.to;
+
+        var endPos = state.doc.resolve(currentSelection.to); //const markPos = this.editor.commands.getMarkPos();
         //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
 
-        this.editor.commands.setTextSelection(to);
+        this.editor.commands.setSelection(new prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection(endPos, endPos));
         return true;
       }
     },
@@ -272,7 +280,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.fa-bookmark:before,\n.fa-hashtag:before,\n.fa-footnote:before {\n  font-family: \"Font Awesome 6 Free\"!important;\n  font-weight: 900!important;\n}\n.fa-bookmark:before {\n  content: '\\f02e';\n}\n.fa-footnote:before {\n  content: '\\F12B'!important;\n}\n.fa-hashtag:before {\n  content: '\\f292';\n}\n*/\n.footnote-wrapper {\n\n    position: relative;\n\n    display: inline-block\n}\n.footnote-container {\n\n    position: absolute;\n\n    z-index: 10\n}\n.footnote-container > :not([hidden]) ~ :not([hidden]) {\n\n    --tw-divide-y-reverse: 0;\n\n    border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n\n    border-bottom-width: calc(1px * var(--tw-divide-y-reverse));\n\n    --tw-divide-opacity: 1;\n\n    border-color: rgba(243, 244, 246, var(--tw-divide-opacity))\n}\n.footnote-container {\n\n    border-radius: 0.125rem;\n\n    border-width: 1px;\n\n    --tw-border-opacity: 1;\n\n    border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));\n\n    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\n\n    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)\n}\n.footnote-button {\n\n    display: flex;\n\n    width: 100%;\n\n    align-items: center;\n\n    padding-left: 0.75rem;\n\n    padding-right: 0.75rem;\n\n    padding-top: 0.5rem;\n\n    padding-bottom: 0.5rem;\n\n    text-align: left\n}\n.footnote-button:hover {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(243, 244, 246, var(--tw-bg-opacity))\n}\n.footnote-button.active {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(229, 231, 235, var(--tw-bg-opacity))\n}\n.footnote-input {\n}\n.footnote-label {\n\n    display: block;\n\n    white-space: nowrap;\n\n    text-align: left\n}\n.footnote-mark {\n\n    margin-right: 0.75rem;\n\n    display: block;\n\n    height: 1rem;\n\n    width: 1rem;\n\n    flex: none\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.fa-bookmark:before,\n.fa-hashtag:before,\n.fa-footnote:before {\n  font-family: \"Font Awesome 6 Free\"!important;\n  font-weight: 900!important;\n}\n.fa-bookmark:before {\n  content: '\\f02e';\n}\n.fa-footnote:before {\n  content: '\\F12B'!important;\n}\n.fa-hashtag:before {\n  content: '\\f292';\n}\n*/\n.footnote-wrapper {\n\n    position: relative;\n\n    display: inline-block\n}\n.footnote-container {\n\n    position: absolute;\n\n    z-index: 10\n}\n.footnote-container > :not([hidden]) ~ :not([hidden]) {\n\n    --tw-divide-y-reverse: 0;\n\n    border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n\n    border-bottom-width: calc(1px * var(--tw-divide-y-reverse));\n\n    --tw-divide-opacity: 1;\n\n    border-color: rgba(243, 244, 246, var(--tw-divide-opacity))\n}\n.footnote-container {\n\n    border-radius: 0.125rem;\n\n    border-width: 1px;\n\n    --tw-border-opacity: 1;\n\n    border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));\n\n    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\n\n    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)\n}\n.footnote-button {\n\n    display: flex;\n\n    width: 100%;\n\n    align-items: center;\n\n    padding-left: 0.75rem;\n\n    padding-right: 0.75rem;\n\n    padding-top: 0.5rem;\n\n    padding-bottom: 0.5rem;\n\n    text-align: left\n}\n.footnote-button:hover {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(243, 244, 246, var(--tw-bg-opacity))\n}\n.footnote-button.active {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(229, 231, 235, var(--tw-bg-opacity))\n}\n.footnote-input {\n}\n.footnote-label {\n\n    display: block;\n\n    white-space: nowrap;\n\n    text-align: left\n}\n.footnote-mark {\n\n    margin-right: 0.75rem;\n\n    display: block;\n\n    height: 1rem;\n\n    width: 1rem;\n\n    flex: none\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
