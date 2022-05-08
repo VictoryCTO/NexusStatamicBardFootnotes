@@ -81,8 +81,23 @@ export default {
           return true;
         //otherwise move the cursor to the end of the selection
         } else {
-          //const endPos = currentSelection.to;
           const endPos = state.doc.resolve(currentSelection.to);
+          //const endPos = props.getPos() + props.node.nodeSize
+
+// I focus the start of the editor because
+// when the cursor is at the end of the node below which
+// we want to add a block, it doesn't focus the next block
+          this.editor.commands.focus('start')
+
+          this.editor
+              .chain()
+              .insertContentAt(endPos, {type: "paragraph"})
+              .focus(endPos)
+              .run();
+
+          return true;
+          //const endPos = currentSelection.to;
+          //const endPos = state.doc.resolve(currentSelection.to);
 
           //const markPos = this.editor.commands.getMarkPos();
           //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
