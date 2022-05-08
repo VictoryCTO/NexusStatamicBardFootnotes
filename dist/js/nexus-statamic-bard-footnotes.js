@@ -223,7 +223,7 @@ __webpack_require__.r(__webpack_exports__);
             to = currentSelection.to; //const markPos = this.editor.commands.getMarkPos();
         //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
 
-        this.editor.commands.setTextSelection(endPos);
+        this.editor.commands.setTextSelection(to);
         return true;
       }
     },
