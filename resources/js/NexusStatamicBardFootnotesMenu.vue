@@ -67,6 +67,23 @@ export default {
         // close the menu
         this.showOptions = false;
       },
+      manipulateSelection() {
+        //get the current selection
+        const currentSelection = this.editor.view.state.selection;
+        console.log('currentSelection:'+currentSelection);
+        //is the selection empty or is the selection just the hashtag
+        if( currentSelection.empty || currentSelection.text==='#' ) {
+          return true;
+        //otherwise move the cursor to the end of the selection
+        } else {
+          const { from, to } = currentSelection;
+
+          //const markPos = this.editor.commands.getMarkPos();
+          //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
+          this.editor.commands.setTextSelection(endPos);
+          return true;
+        }
+      },
       saveChanges() {
         //make sure data is saved
         this.setFootnote();
@@ -74,6 +91,8 @@ export default {
         this.closeFootnoteMenu();
       },
       setFootnote() {
+        //make sure this is either an empty selection or just a '#' or move the selection to the end
+        this.manipulateSelection();
         // update the editor
         this.editor.commands.nexusStatamicBardFootnote({
           url: this.url,

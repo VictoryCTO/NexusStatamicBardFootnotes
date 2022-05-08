@@ -1,5 +1,6 @@
 import { Mark } from 'tiptap'
 import { updateMark, removeMark } from 'tiptap-commands'
+import { } from 'tiptap-utils'
 
 export default class NexusStatamicBardFootnote extends Mark {
     name() {
@@ -31,7 +32,7 @@ export default class NexusStatamicBardFootnote extends Mark {
                     'data-url': mark.attrs.url,
                     'data-text': mark.attrs.text
                 },
-                0,
+                "#",
             ],
         };
     }

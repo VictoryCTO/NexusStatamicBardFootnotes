@@ -1,10 +1,26 @@
+body {
+    counter-reset: footnote-number 1;
+}
+
 footnote {
+    visibility: visible;
+    vertical-align: super;
+    font-weight: bold;
+    font-size: 75%;
+    /*counter-increment: footnote-number;
+    content: "counter(footnote-number) ";
+    cursor: pointer;*/
+
 }
 
 footnote:after {
-    visibility: visible;
+    /*visibility: visible;
     vertical-align: super;
-    font-size: smaller;
-    content: '#';
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 75%;*/
+    counter-increment: number;
+    content: "counter(number) ";
+
 
 }
