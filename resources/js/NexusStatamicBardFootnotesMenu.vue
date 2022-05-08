@@ -75,7 +75,7 @@ export default {
         console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
         console.log('currentSelection anchor:'+currentSelection.anchor);
         console.log('currentSelection textContent:'+state.doc.textContent);
-        return true;
+        //return true;
         //is the selection empty or is the selection just the hashtag
         if( currentSelection.empty || currentSelection.content==='#' ) {
           return true;
@@ -87,6 +87,7 @@ export default {
           //const markPos = this.editor.commands.getMarkPos();
           //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
           this.editor.commands.setSelection( new TextSelection(endPos, endPos));
+          //this.editor.chain().focus().setTextSelection(10).run()
           return true;
         }
       },

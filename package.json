@@ -25,6 +25,7 @@
     "dependencies": {
         "tiptap": "^1.32.2",
         "tiptap-commands": "^1.17.1",
-        "tiptap-utils": "^1.13.1"
+        "tiptap-utils": "^1.13.1",
+        "prosemirror-commands": "^1.0.7"
     }
 }
