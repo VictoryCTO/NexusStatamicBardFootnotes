@@ -215,19 +215,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     manipulateSelection: function manipulateSelection() {
       //get the current selection
-      var currentSelection = this.editor.view.state.selection;
+      var _this$editor = this.editor,
+          view = _this$editor.view,
+          state = _this$editor.state;
+      var currentSelection = state.selection;
       console.log('currentSelection from:' + currentSelection.from + ' to:' + currentSelection.to);
-      console.log('currentSelection text:' + currentSelection.text);
-      console.log('currentSelection content:' + currentSelection.content);
-      console.log('currentSelection json:' + currentSelection.toJSON); //is the selection empty or is the selection just the hashtag
+      console.log('currentSelection anchor:' + currentSelection.anchor);
+      console.log('currentSelection textContent:' + state.doc.textContent);
+      return true; //is the selection empty or is the selection just the hashtag
 
       if (currentSelection.empty || currentSelection.content === '#') {
         return true; //otherwise move the cursor to the end of the selection
       } else {
-        var _this$editor = this.editor,
-            view = _this$editor.view,
-            state = _this$editor.state; //const endPos = currentSelection.to;
-
+        //const endPos = currentSelection.to;
         var endPos = state.doc.resolve(currentSelection.to); //const markPos = this.editor.commands.getMarkPos();
         //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
 

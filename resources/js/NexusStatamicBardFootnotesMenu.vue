@@ -70,17 +70,17 @@ export default {
       },
       manipulateSelection() {
         //get the current selection
-        const currentSelection = this.editor.view.state.selection;
+        const { view, state } = this.editor;
+        const currentSelection = state.selection;
         console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
-        console.log('currentSelection text:'+currentSelection.text);
-        console.log('currentSelection content:'+currentSelection.content);
-        console.log('currentSelection json:'+currentSelection.toJSON);
+        console.log('currentSelection anchor:'+currentSelection.anchor);
+        console.log('currentSelection textContent:'+state.doc.textContent);
+        return true;
         //is the selection empty or is the selection just the hashtag
         if( currentSelection.empty || currentSelection.content==='#' ) {
           return true;
         //otherwise move the cursor to the end of the selection
         } else {
-          const { view, state } = this.editor
           //const endPos = currentSelection.to;
           const endPos = state.doc.resolve(currentSelection.to);
 
