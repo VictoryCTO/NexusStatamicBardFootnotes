@@ -87,11 +87,12 @@ export default {
         } else {
           console.log('selected: "'+text+'"...jumping ahead');
           const { view, state } = this.editor;
-          const { from, to } = state.selection;
-          const startPos = state.doc.resolve(from+12);
-          const endPos = state.doc.resolve(to+12);
+          const { from, to, $from, $to } = state.selection;
+          //const startPos = state.doc.resolve(from);
+          //const endPos = state.doc.resolve(to);
           //updateSelection( new TextSelection(startPos, endPos));
-          this.editor.setSelection( new TextSelection(startPos, endPos));
+          //this.editor.setSelection( new TextSelection(startPos, endPos));
+          this.editor.setSelection( new TextSelection($to));
           //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
           this.getTextSelection();
         }
