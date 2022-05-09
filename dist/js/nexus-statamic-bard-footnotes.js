@@ -268,7 +268,7 @@ __webpack_require__.r(__webpack_exports__);
         var transaction = view.state.tr;
         transaction.insertText('hey', $to.pos); //view.dispatch(transaction);
 
-        transaction.setSelection(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection.create(state.apply(transaction).doc, from + 3)); //transaction.setSelection(new TextSelection($to, $to.pos+3));
+        transaction.setSelection(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection.create(state.apply(transaction).doc, from, from + 3)); //transaction.setSelection(new TextSelection($to, $to.pos+3));
         //const transaction = state.tr.insertText('hey', $to.pos);
         //view.dispatch(state.tr.setSelection( new TextSelection($to, $to.pos +3)));
 
