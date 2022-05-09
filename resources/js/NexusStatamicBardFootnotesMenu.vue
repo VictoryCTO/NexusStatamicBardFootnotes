@@ -88,10 +88,24 @@ export default {
           console.log('selected: "'+text+'"...jumping ahead');
           const { view, state } = this.editor;
           const { from, to, $from, $to } = state.selection;
+
+          const before = $from.nodeBefore.textContent
+          const after = $to.nodeAfter.textContent
+          const previousLine = before.slice(before.lastIndexOf('\n') + 1)
+
+          if (previousLine.match(/^[-+*]/g)) {
+            this.$nextTick(_ => {
+              $from.pos += 2
+              $to.pos += 1
+              this.editor.setContent(`<pre><code>${before}\n- \n${after.slice(1)}</code></pre>`)
+              this.setSelectionAtPos(editorView, state.selection)
+            });
+          }
+
           //const startPos = state.doc.resolve(from);
           //const endPos = state.doc.resolve(to);
           //updateSelection( new TextSelection(startPos, endPos));
-          this.editor.state.setSelection( new TextSelection($to));
+          //this.editor.commands.focus();setTextSelection( new TextSelection($to));
           //view.dispatch(state.tr.setSelection( new TextSelection($to)));
           //this.editor.state. setTextSelection(10).run()
 
