@@ -129,10 +129,6 @@ export default {
     }
 };
 
-$( "footnote" ).hover(
-    vue.updateShowOptions()
-);
-
 </script>
 <style lang="postcss">
 /*.fa-bookmark:before,
