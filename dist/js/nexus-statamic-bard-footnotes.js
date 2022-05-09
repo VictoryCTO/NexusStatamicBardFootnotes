@@ -265,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
             .focus(endPos)
             .run()*/
 
-        var transaction = state.tr.insertText('hey', $to.pos);
+        var transaction = state.insertText('hey', $to.pos);
         view.dispatch(transaction);
         /*const { view, state } = this.editor;
         const { from, to, $from, $to } = state.selection;

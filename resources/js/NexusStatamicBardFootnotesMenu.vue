@@ -102,7 +102,7 @@ export default {
               .run()*/
 
 
-          const transaction = state.tr.insertText('hey', $to.pos);
+          const transaction = state.insertText('hey', $to.pos);
           view.dispatch(transaction);
 
           /*const { view, state } = this.editor;
