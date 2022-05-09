@@ -109,8 +109,9 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function (_Mark) {
     value: function plugins() {
       return [new tiptap__WEBPACK_IMPORTED_MODULE_0__.Plugin({
         props: {
-          handleClick: function handleClick(view, pos) {
-            updateShowOptions();
+          handleClickOn: function handleClickOn(view, pos, node) {
+            console.log('handleClickOn', node.attrs);
+            view.updateShowOptions();
           }
         }
       })];

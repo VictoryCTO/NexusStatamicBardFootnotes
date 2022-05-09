@@ -55,8 +55,9 @@ export default class NexusStatamicBardFootnote extends Mark {
         return [
             new Plugin({
                 props: {
-                    handleClick(view, pos) {
-                        updateShowOptions();
+                    handleClickOn(view, pos, node) {
+                        console.log('handleClickOn', node.attrs);
+                        view.updateShowOptions();
                     },
                 },
             }),
