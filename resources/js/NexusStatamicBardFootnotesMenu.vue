@@ -112,6 +112,8 @@ export default {
           //view.dispatch(state.tr.setSelection( new TextSelection($to, $to.pos +3)));
           view.dispatch(transaction);
 
+          this.getTextSelection();
+
           /*const { view, state } = this.editor;
           const { from, to, $from, $to } = state.selection;
 
