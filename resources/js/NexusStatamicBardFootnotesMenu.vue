@@ -90,8 +90,10 @@ export default {
           const { from, to, $from, $to } = state.selection;
 
           const { tr: transaction } = view.state;
-          let mark = '<footnote>#</footnote>';
-          transaction.insertText(mark, $to.pos);
+          //let mark = '<footnote>#</footnote>';
+          //transaction.insertText(mark, $to.pos);
+          let mark = this.editor.schema.marks.nexusStatamicBardFootnote.create();
+          transaction.insert($to.pos, mark);
           transaction.setSelection(TextSelection.create(state.apply(transaction).doc, to, to + mark.length));
           view.dispatch(transaction.scrollIntoView());
 
