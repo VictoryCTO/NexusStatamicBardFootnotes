@@ -114,7 +114,7 @@ export default {
       },
       setFootnote() {
         //make sure this is either an empty selection or just a '#' or move the selection to the end
-        this.manipulateSelection();
+        //this.manipulateSelection();
         // update the editor
         this.editor.commands.nexusStatamicBardFootnote({
           url: this.url,

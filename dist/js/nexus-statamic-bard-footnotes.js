@@ -260,8 +260,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     setFootnote: function setFootnote() {
       //make sure this is either an empty selection or just a '#' or move the selection to the end
-      this.manipulateSelection(); // update the editor
-
+      //this.manipulateSelection();
+      // update the editor
       this.editor.commands.nexusStatamicBardFootnote({
         url: this.url,
         text: this.text
