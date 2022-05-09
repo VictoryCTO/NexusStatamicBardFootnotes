@@ -68,14 +68,25 @@ export default {
         // close the menu
         this.showOptions = false;
       },
+      getTextSelection() {
+        //get the current selection
+        const { view, state } = this.editor;
+        const currentSelection = state.selection;
+        console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
+        console.log('currentSelection anchor:'+currentSelection.anchor);
+        const text = state.doc.textBetween(currentSelection.from, currentSelection.to, '')
+        console.log('currentSelection textBetween:'+text);
+        return text;
+      },
       manipulateSelection() {
         //get the current selection
         const { view, state } = this.editor;
         const currentSelection = state.selection;
         console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
         console.log('currentSelection anchor:'+currentSelection.anchor);
-        //console.log('currentSelection textContent:'+state.doc.textContent);
-        //return true;
+        const text = state.doc.textBetween(currentSelection.from, currentSelection.to, '')
+        console.log('currentSelection textBetween:'+text);
+        return true;
         //is the selection empty or is the selection just the hashtag
         if( currentSelection.empty || currentSelection.content==='#' ) {
           return true;
@@ -125,6 +136,7 @@ export default {
         this.showOptions = !this.showOptions;
         this.url = this.currentUrl;
         this.text = this.currentText;
+        this.getTextSelection();
       },
     }
 };

@@ -1,6 +1,6 @@
 import { Mark, Plugin } from 'tiptap'
 import { updateMark, removeMark } from 'tiptap-commands'
-import { } from 'tiptap-utils'
+import {nodeEqualsType} from 'tiptap-utils'
 
 export default class NexusStatamicBardFootnote extends Mark {
     name() {
@@ -56,6 +56,7 @@ export default class NexusStatamicBardFootnote extends Mark {
             new Plugin({
                 props: {
                     handleClickOn(view, pos, node) {
+                        if(mark())
                         console.log('handleClickOn', node.attrs);
                         view.updateShowOptions();
                     },
