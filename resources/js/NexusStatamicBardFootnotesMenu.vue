@@ -86,7 +86,23 @@ export default {
           console.log('we only selected "a"...nothing to do');
         } else {
           console.log('selected: "'+text+'"...jumping ahead');
-          const { view, state } = this.editor;
+          const { view, state, props } = this.editor;
+          const endPos = props.getPos() + props.node.nodeSize;
+          props.editor.commands.focus('start')
+
+          props.editor
+              .chain()
+              .insertContentAt(endPos, {
+                type: "paragraph"
+              })
+              .focus(endPos)
+              .run()
+
+
+          const transaction = state.tr.insertText('hey!')
+          view.dispatch(transaction);
+
+          /*const { view, state } = this.editor;
           const { from, to, $from, $to } = state.selection;
 
           const before = $from.nodeBefore.textContent
@@ -110,7 +126,7 @@ export default {
           //this.editor.state. setTextSelection(10).run()
 
           //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
-          this.getTextSelection();
+          this.getTextSelection();*/
         }
         return true;
 
