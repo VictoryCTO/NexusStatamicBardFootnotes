@@ -250,12 +250,17 @@ __webpack_require__.r(__webpack_exports__);
             view = _this$editor2.view,
             state = _this$editor2.state,
             props = _this$editor2.props;
-        var endPos = props.getPos() + props.node.nodeSize;
-        props.editor.commands.focus('start');
-        props.editor.chain().insertContentAt(endPos, {
-          type: "paragraph"
-        }).focus(endPos).run();
-        var transaction = state.tr.insertText('hey!');
+        /*const endPos = props.getPos() + props.node.nodeSize;
+        props.editor.commands.focus('start')
+         props.editor
+            .chain()
+            .insertContentAt(endPos, {
+              type: "paragraph"
+            })
+            .focus(endPos)
+            .run()*/
+
+        var transaction = state.tr.insertText('hey');
         view.dispatch(transaction);
         /*const { view, state } = this.editor;
         const { from, to, $from, $to } = state.selection;
