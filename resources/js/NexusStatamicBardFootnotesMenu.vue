@@ -86,7 +86,7 @@ export default {
           console.log('we only selected "a"...nothing to do');
         } else {
           console.log('selected: "'+text+'"...jumping ahead');
-          const { view, state } = this.editor;
+          const { view, state, dispatch } = this.editor;
           const { from, to, $from, $to } = state.selection;
           //const startPos = state.doc.resolve(from);
           //const endPos = state.doc.resolve(to);

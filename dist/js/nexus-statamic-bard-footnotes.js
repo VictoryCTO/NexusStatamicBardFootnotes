@@ -248,7 +248,8 @@ __webpack_require__.r(__webpack_exports__);
         console.log('selected: "' + text + '"...jumping ahead');
         var _this$editor2 = this.editor,
             view = _this$editor2.view,
-            state = _this$editor2.state;
+            state = _this$editor2.state,
+            dispatch = _this$editor2.dispatch;
         var _state$selection = state.selection,
             from = _state$selection.from,
             to = _state$selection.to,
