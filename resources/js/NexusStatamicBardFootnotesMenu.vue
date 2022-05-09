@@ -74,7 +74,7 @@ export default {
         const currentSelection = state.selection;
         console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
         console.log('currentSelection anchor:'+currentSelection.anchor);
-        console.log('currentSelection textContent:'+state.doc.textContent);
+        //console.log('currentSelection textContent:'+state.doc.textContent);
         //return true;
         //is the selection empty or is the selection just the hashtag
         if( currentSelection.empty || currentSelection.content==='#' ) {
@@ -128,6 +128,11 @@ export default {
       },
     }
 };
+
+$( "footnote" ).hover(
+    vue.updateShowOptions()
+);
+
 </script>
 <style lang="postcss">
 /*.fa-bookmark:before,

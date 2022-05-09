@@ -1,4 +1,4 @@
-import { Mark } from 'tiptap'
+import { Mark, Plugin } from 'tiptap'
 import { updateMark, removeMark } from 'tiptap-commands'
 import { } from 'tiptap-utils'
 
@@ -52,7 +52,15 @@ export default class NexusStatamicBardFootnote extends Mark {
     }
 
     plugins() {
-        return []
+        return [
+            new Plugin({
+                props: {
+                    handleClick(view, pos) {
+                        updateShowOptions();
+                    },
+                },
+            }),
+        ]
     }
 
     pasteRules({ type }) {
