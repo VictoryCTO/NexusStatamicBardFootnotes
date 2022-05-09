@@ -102,7 +102,12 @@ export default {
               .run()*/
 
 
-          const transaction = state.insertText('hey', $to.pos);
+          const { tr: transaction } = view.state;
+          transaction.insertText('hey', $to.pos);
+          transaction.setSelection(TextSelection.create(state.doc, from + 3));
+
+          //const transaction = state.tr.insertText('hey', $to.pos);
+          //view.dispatch(state.tr.setSelection( new TextSelection($to)));
           view.dispatch(transaction);
 
           /*const { view, state } = this.editor;
