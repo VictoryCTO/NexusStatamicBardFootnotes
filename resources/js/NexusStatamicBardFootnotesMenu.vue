@@ -105,7 +105,7 @@ export default {
           const { tr: transaction } = view.state;
           transaction.insertText('hey', $to.pos);
           //view.dispatch(transaction);
-          transaction.setSelection(TextSelection.create(state.apply(transaction).doc, from, from + 3));
+          transaction.setSelection(TextSelection.create(state.apply(transaction).doc, to, to + 3));
           //transaction.setSelection(new TextSelection($to, $to.pos+3));
 
           //const transaction = state.tr.insertText('hey', $to.pos);
