@@ -73,7 +73,7 @@ export default {
         const { view, state } = this.editor;
         const { from, to } = view.state.selection;
         const text = state.doc.textBetween(from, to, '');
-        console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
+        console.log('currentSelection from:'+from+' to:'+to);
         console.log('currentSelection text:'+text);
         return text;
       },

@@ -232,7 +232,7 @@ __webpack_require__.r(__webpack_exports__);
           from = _view$state$selection.from,
           to = _view$state$selection.to;
       var text = state.doc.textBetween(from, to, '');
-      console.log('currentSelection from:' + currentSelection.from + ' to:' + currentSelection.to);
+      console.log('currentSelection from:' + from + ' to:' + to);
       console.log('currentSelection text:' + text);
       return text;
     },
