@@ -110,7 +110,7 @@ export default {
 
           //const transaction = state.tr.insertText('hey', $to.pos);
           //view.dispatch(state.tr.setSelection( new TextSelection($to, $to.pos +3)));
-          view.dispatch(transaction);
+          view.dispatch(transaction.scrollIntoView());
 
           this.getTextSelection();
 

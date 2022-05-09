@@ -272,7 +272,7 @@ __webpack_require__.r(__webpack_exports__);
         //const transaction = state.tr.insertText('hey', $to.pos);
         //view.dispatch(state.tr.setSelection( new TextSelection($to, $to.pos +3)));
 
-        view.dispatch(transaction);
+        view.dispatch(transaction.scrollIntoView());
         this.getTextSelection();
         /*const { view, state } = this.editor;
         const { from, to, $from, $to } = state.selection;
