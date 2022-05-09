@@ -91,8 +91,9 @@ export default {
           //const startPos = state.doc.resolve(from);
           //const endPos = state.doc.resolve(to);
           //updateSelection( new TextSelection(startPos, endPos));
-          //this.editor.setSelection( new TextSelection(startPos, endPos));
-          view.dispatch(state.tr.setSelection( new TextSelection($to)));
+          this.editor.state.setSelection( new TextSelection($to));
+          //view.dispatch(state.tr.setSelection( new TextSelection($to)));
+          //this.editor.state. setTextSelection(10).run()
 
           //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
           this.getTextSelection();
