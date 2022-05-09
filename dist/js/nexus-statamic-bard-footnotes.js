@@ -258,7 +258,7 @@ __webpack_require__.r(__webpack_exports__);
         //updateSelection( new TextSelection(startPos, endPos));
         //this.editor.setSelection( new TextSelection(startPos, endPos));
 
-        state.setSelection(new prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection($to)); //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
+        state.tr.setSelection(new prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection($to)); //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
 
         this.getTextSelection();
       }
