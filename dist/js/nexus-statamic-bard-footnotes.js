@@ -242,10 +242,10 @@ __webpack_require__.r(__webpack_exports__);
       //get the current selection
       var text = this.getTextSelection();
 
-      if (text === 'a') {
-        console.log('we only selected "a"...nothing to do');
+      if (text === '#') {
+        console.log('we selected a current footnote...nothing to do');
       } else {
-        console.log('selected: "' + text + '"...jumping ahead');
+        console.log('selected: "' + text + '"...adding footnote after');
         var _this$editor2 = this.editor,
             view = _this$editor2.view,
             state = _this$editor2.state,
@@ -255,79 +255,13 @@ __webpack_require__.r(__webpack_exports__);
             to = _state$selection.to,
             $from = _state$selection.$from,
             $to = _state$selection.$to;
-        /*const endPos = props.getPos() + props.node.nodeSize;
-        props.editor.commands.focus('start')
-         props.editor
-            .chain()
-            .insertContentAt(endPos, {
-              type: "paragraph"
-            })
-            .focus(endPos)
-            .run()*/
-
         var transaction = view.state.tr;
-        transaction.insertText('hey', $to.pos); //view.dispatch(transaction);
-
-        transaction.setSelection(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection.create(state.apply(transaction).doc, to, to + 3)); //transaction.setSelection(new TextSelection($to, $to.pos+3));
-        //const transaction = state.tr.insertText('hey', $to.pos);
-        //view.dispatch(state.tr.setSelection( new TextSelection($to, $to.pos +3)));
-
+        var mark = '<footnote>#</footnote>';
+        transaction.insertText(mark, $to.pos);
+        transaction.setSelection(prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection.create(state.apply(transaction).doc, to, to + mark.length));
         view.dispatch(transaction.scrollIntoView());
         this.getTextSelection();
-        /*const { view, state } = this.editor;
-        const { from, to, $from, $to } = state.selection;
-         const before = $from.nodeBefore.textContent
-        const after = $to.nodeAfter.textContent
-        const previousLine = before.slice(before.lastIndexOf('\n') + 1)
-         if (previousLine.match(/^[-+*]/g)) {
-          this.$nextTick(_ => {
-            $from.pos += 2
-            $to.pos += 1
-            this.editor.setContent(`<pre><code>${before}\n- \n${after.slice(1)}</code></pre>`)
-            this.setSelectionAtPos(editorView, state.selection)
-          });
-        }
-         //const startPos = state.doc.resolve(from);
-        //const endPos = state.doc.resolve(to);
-        //updateSelection( new TextSelection(startPos, endPos));
-        //this.editor.commands.focus();setTextSelection( new TextSelection($to));
-        //view.dispatch(state.tr.setSelection( new TextSelection($to)));
-        //this.editor.state. setTextSelection(10).run()
-         //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
-        this.getTextSelection();*/
       }
-
-      return true;
-      /*const { view, state } = this.editor;
-      const currentSelection = state.selection;
-      console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
-      console.log('currentSelection anchor:'+currentSelection.anchor);
-      //const text = state.doc.textBetween(currentSelection.from, currentSelection.to, '')
-      console.log('currentSelection textBetween:'+text);
-      //return true;
-       this.setSelectionAtPosition(view, currentSelection);
-      //is the selection empty or is the selection just the hashtag
-      if( currentSelection.empty || this.getTextSelection()==='#' ) {
-        console.log('this is just a hashtag')
-        return true;
-      //otherwise move the cursor to the end of the selection
-      } else {
-        const endPos = state.doc.resolve(currentSelection.to);
-        //const endPos = props.getPos() + props.node.nodeSize
-      // I focus the start of the editor because
-      // when the cursor is at the end of the node below which
-      // we want to add a block, it doesn't focus the next block
-        //this.editor.commands.focus('start')
-         this.editor.chainCommands().insertTextAfter() insertContentAt(endPos, {type: "footnote"});
-         //return true;
-        //const endPos = currentSelection.to;
-        //const endPos = state.doc.resolve(currentSelection.to);
-         //const markPos = this.editor.commands.getMarkPos();
-        //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
-        this.editor.commands.setSelection( new TextSelection(endPos, endPos+1));
-        //this.editor.chain().focus().setTextSelection(10).run()
-        return true;
-      }*/
     },
     saveChanges: function saveChanges() {
       //make sure data is saved
@@ -374,7 +308,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.fa-bookmark:before,\n.fa-hashtag:before,\n.fa-footnote:before {\n  font-family: \"Font Awesome 6 Free\"!important;\n  font-weight: 900!important;\n}\n.fa-bookmark:before {\n  content: '\\f02e';\n}\n.fa-footnote:before {\n  content: '\\F12B'!important;\n}\n.fa-hashtag:before {\n  content: '\\f292';\n}\n*/\n.footnote-wrapper {\n\n    position: relative;\n\n    display: inline-block\n}\n.footnote-container {\n\n    position: absolute;\n\n    z-index: 10\n}\n.footnote-container > :not([hidden]) ~ :not([hidden]) {\n\n    --tw-divide-y-reverse: 0;\n\n    border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n\n    border-bottom-width: calc(1px * var(--tw-divide-y-reverse));\n\n    --tw-divide-opacity: 1;\n\n    border-color: rgba(243, 244, 246, var(--tw-divide-opacity))\n}\n.footnote-container {\n\n    border-radius: 0.125rem;\n\n    border-width: 1px;\n\n    --tw-border-opacity: 1;\n\n    border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));\n\n    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\n\n    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)\n}\n.footnote-button {\n\n    display: flex;\n\n    width: 100%;\n\n    align-items: center;\n\n    padding-left: 0.75rem;\n\n    padding-right: 0.75rem;\n\n    padding-top: 0.5rem;\n\n    padding-bottom: 0.5rem;\n\n    text-align: left\n}\n.footnote-button:hover {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(243, 244, 246, var(--tw-bg-opacity))\n}\n.footnote-button.active {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(229, 231, 235, var(--tw-bg-opacity))\n}\n.footnote-input {\n}\n.footnote-label {\n\n    display: block;\n\n    white-space: nowrap;\n\n    text-align: left\n}\n.footnote-mark {\n\n    margin-right: 0.75rem;\n\n    display: block;\n\n    height: 1rem;\n\n    width: 1rem;\n\n    flex: none\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.fa-bookmark:before,\n.fa-hashtag:before,\n.fa-footnote:before {\n  font-family: \"Font Awesome 6 Free\"!important;\n  font-weight: 900!important;\n}\n.fa-bookmark:before {\n  content: '\\f02e';\n}\n.fa-footnote:before {\n  content: '\\F12B'!important;\n}\n.fa-hashtag:before {\n  content: '\\f292';\n}\n*/\n.footnote-wrapper {\n\n    position: relative;\n\n    display: inline-block\n}\n.footnote-container {\n\n    position: absolute;\n\n    z-index: 10\n}\n.footnote-container > :not([hidden]) ~ :not([hidden]) {\n\n    --tw-divide-y-reverse: 0;\n\n    border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n\n    border-bottom-width: calc(1px * var(--tw-divide-y-reverse));\n\n    --tw-divide-opacity: 1;\n\n    border-color: rgba(243, 244, 246, var(--tw-divide-opacity))\n}\n.footnote-container {\n\n    border-radius: 0.125rem;\n\n    border-width: 1px;\n\n    --tw-border-opacity: 1;\n\n    border-color: rgba(209, 213, 219, var(--tw-border-opacity));\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));\n\n    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\n\n    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)\n}\n.footnote-button {\n\n    display: flex;\n\n    width: 100%;\n\n    align-items: center;\n\n    padding-left: 0.75rem;\n\n    padding-right: 0.75rem;\n\n    padding-top: 0.5rem;\n\n    padding-bottom: 0.5rem;\n\n    text-align: left\n}\n.footnote-button:hover {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(243, 244, 246, var(--tw-bg-opacity))\n}\n.footnote-button.active {\n\n    --tw-bg-opacity: 1;\n\n    background-color: rgba(229, 231, 235, var(--tw-bg-opacity))\n}\n.footnote-input {\n}\n.footnote-label {\n\n    display: block;\n\n    white-space: nowrap;\n\n    text-align: left\n}\n.footnote-mark {\n\n    margin-right: 0.75rem;\n\n    display: block;\n\n    height: 1rem;\n\n    width: 1rem;\n\n    flex: none\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

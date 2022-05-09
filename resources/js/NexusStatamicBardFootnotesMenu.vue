@@ -82,103 +82,21 @@ export default {
         //get the current selection
         const text = this.getTextSelection();
 
-        if(text==='a') {
-          console.log('we only selected "a"...nothing to do');
+        if(text==='#') {
+          console.log('we selected a current footnote...nothing to do');
         } else {
-          console.log('selected: "'+text+'"...jumping ahead');
+          console.log('selected: "'+text+'"...adding footnote after');
           const { view, state, props } = this.editor;
           const { from, to, $from, $to } = state.selection;
 
-
-          /*const endPos = props.getPos() + props.node.nodeSize;
-          props.editor.commands.focus('start')
-
-          props.editor
-              .chain()
-              .insertContentAt(endPos, {
-                type: "paragraph"
-              })
-              .focus(endPos)
-              .run()*/
-
-
           const { tr: transaction } = view.state;
-          transaction.insertText('hey', $to.pos);
-          //view.dispatch(transaction);
-          transaction.setSelection(TextSelection.create(state.apply(transaction).doc, to, to + 3));
-          //transaction.setSelection(new TextSelection($to, $to.pos+3));
-
-          //const transaction = state.tr.insertText('hey', $to.pos);
-          //view.dispatch(state.tr.setSelection( new TextSelection($to, $to.pos +3)));
+          let mark = '<footnote>#</footnote>';
+          transaction.insertText(mark, $to.pos);
+          transaction.setSelection(TextSelection.create(state.apply(transaction).doc, to, to + mark.length));
           view.dispatch(transaction.scrollIntoView());
 
           this.getTextSelection();
-
-          /*const { view, state } = this.editor;
-          const { from, to, $from, $to } = state.selection;
-
-          const before = $from.nodeBefore.textContent
-          const after = $to.nodeAfter.textContent
-          const previousLine = before.slice(before.lastIndexOf('\n') + 1)
-
-          if (previousLine.match(/^[-+*]/g)) {
-            this.$nextTick(_ => {
-              $from.pos += 2
-              $to.pos += 1
-              this.editor.setContent(`<pre><code>${before}\n- \n${after.slice(1)}</code></pre>`)
-              this.setSelectionAtPos(editorView, state.selection)
-            });
-          }
-
-          //const startPos = state.doc.resolve(from);
-          //const endPos = state.doc.resolve(to);
-          //updateSelection( new TextSelection(startPos, endPos));
-          //this.editor.commands.focus();setTextSelection( new TextSelection($to));
-          //view.dispatch(state.tr.setSelection( new TextSelection($to)));
-          //this.editor.state. setTextSelection(10).run()
-
-          //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
-          this.getTextSelection();*/
         }
-        return true;
-
-
-
-        /*const { view, state } = this.editor;
-        const currentSelection = state.selection;
-        console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
-        console.log('currentSelection anchor:'+currentSelection.anchor);
-        //const text = state.doc.textBetween(currentSelection.from, currentSelection.to, '')
-        console.log('currentSelection textBetween:'+text);
-        //return true;
-
-        this.setSelectionAtPosition(view, currentSelection);
-        //is the selection empty or is the selection just the hashtag
-        if( currentSelection.empty || this.getTextSelection()==='#' ) {
-          console.log('this is just a hashtag')
-          return true;
-        //otherwise move the cursor to the end of the selection
-        } else {
-          const endPos = state.doc.resolve(currentSelection.to);
-          //const endPos = props.getPos() + props.node.nodeSize
-
-// I focus the start of the editor because
-// when the cursor is at the end of the node below which
-// we want to add a block, it doesn't focus the next block
-          //this.editor.commands.focus('start')
-
-          this.editor.chainCommands().insertTextAfter() insertContentAt(endPos, {type: "footnote"});
-
-          //return true;
-          //const endPos = currentSelection.to;
-          //const endPos = state.doc.resolve(currentSelection.to);
-
-          //const markPos = this.editor.commands.getMarkPos();
-          //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
-          this.editor.commands.setSelection( new TextSelection(endPos, endPos+1));
-          //this.editor.chain().focus().setTextSelection(10).run()
-          return true;
-        }*/
       },
       saveChanges() {
         //make sure data is saved
