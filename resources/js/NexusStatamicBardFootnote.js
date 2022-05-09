@@ -53,7 +53,7 @@ export default class NexusStatamicBardFootnote extends Mark {
 
     plugins() {
         return [
-            new Plugin({
+            /*new Plugin({
                 props: {
                     handleClickOn(view, pos, node) {
                         if(mark())
@@ -61,7 +61,7 @@ export default class NexusStatamicBardFootnote extends Mark {
                         view.updateShowOptions();
                     },
                 },
-            }),
+            }),*/
         ]
     }
 

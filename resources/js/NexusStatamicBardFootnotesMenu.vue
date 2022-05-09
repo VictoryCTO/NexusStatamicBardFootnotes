@@ -71,10 +71,8 @@ export default {
       getTextSelection() {
         //get the current selection
         const { view, state } = this.editor;
-        const currentSelection = state.selection;
-        console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
-        console.log('currentSelection anchor:'+currentSelection.anchor);
-        const text = state.doc.textBetween(currentSelection.from, currentSelection.to, '')
+        const { from, to } = view.state.selection;
+        const text = state.doc.textBetween(from, to, '');
         console.log('currentSelection textBetween:'+text);
         return text;
       },
@@ -88,7 +86,7 @@ export default {
         console.log('currentSelection textBetween:'+text);
         return true;
         //is the selection empty or is the selection just the hashtag
-        if( currentSelection.empty || currentSelection.content==='#' ) {
+        if( currentSelection.empty || this.getTextSelection()==='#' ) {
           return true;
         //otherwise move the cursor to the end of the selection
         } else {
@@ -98,21 +96,17 @@ export default {
 // I focus the start of the editor because
 // when the cursor is at the end of the node below which
 // we want to add a block, it doesn't focus the next block
-          this.editor.commands.focus('start')
+          //this.editor.commands.focus('start')
 
-          this.editor
-              .chain()
-              .insertContentAt(endPos, {type: "paragraph"})
-              .focus(endPos)
-              .run();
+          this.editor.insertContentAt(endPos, {type: "footnote"});
 
-          return true;
+          //return true;
           //const endPos = currentSelection.to;
           //const endPos = state.doc.resolve(currentSelection.to);
 
           //const markPos = this.editor.commands.getMarkPos();
           //this.editor.commands.getMarkRange(markPos, this.editor.view.state.schema.marks.nexusStatamicBardFootnote)
-          this.editor.commands.setSelection( new TextSelection(endPos, endPos));
+          this.editor.commands.setSelection( new TextSelection(endPos, endPos+1));
           //this.editor.chain().focus().setTextSelection(10).run()
           return true;
         }
@@ -125,7 +119,7 @@ export default {
       },
       setFootnote() {
         //make sure this is either an empty selection or just a '#' or move the selection to the end
-        //this.manipulateSelection();
+        this.manipulateSelection();
         // update the editor
         this.editor.commands.nexusStatamicBardFootnote({
           url: this.url,
@@ -136,7 +130,6 @@ export default {
         this.showOptions = !this.showOptions;
         this.url = this.currentUrl;
         this.text = this.currentText;
-        this.getTextSelection();
       },
     }
 };
