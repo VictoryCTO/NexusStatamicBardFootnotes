@@ -87,6 +87,9 @@ export default {
         } else {
           console.log('selected: "'+text+'"...jumping ahead');
           const { view, state, props } = this.editor;
+          const { from, to, $from, $to } = state.selection;
+
+
           /*const endPos = props.getPos() + props.node.nodeSize;
           props.editor.commands.focus('start')
 
@@ -99,7 +102,7 @@ export default {
               .run()*/
 
 
-          const transaction = state.tr.insertText('hey')
+          const transaction = state.tr.insertText('hey', $to.pos);
           view.dispatch(transaction);
 
           /*const { view, state } = this.editor;
