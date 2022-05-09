@@ -248,8 +248,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log('selected: "' + text + '"...jumping ahead');
         var _this$editor2 = this.editor,
             view = _this$editor2.view,
-            state = _this$editor2.state,
-            dispatch = _this$editor2.dispatch;
+            state = _this$editor2.state;
         var _state$selection = state.selection,
             from = _state$selection.from,
             to = _state$selection.to,
@@ -259,7 +258,7 @@ __webpack_require__.r(__webpack_exports__);
         //updateSelection( new TextSelection(startPos, endPos));
         //this.editor.setSelection( new TextSelection(startPos, endPos));
 
-        dispatch(state.tr.setSelection(new prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection($to))); //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
+        view.dispatch(state.tr.setSelection(new prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.TextSelection($to))); //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
 
         this.getTextSelection();
       }

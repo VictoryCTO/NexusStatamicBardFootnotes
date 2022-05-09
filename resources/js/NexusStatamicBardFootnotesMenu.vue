@@ -86,13 +86,13 @@ export default {
           console.log('we only selected "a"...nothing to do');
         } else {
           console.log('selected: "'+text+'"...jumping ahead');
-          const { view, state, dispatch } = this.editor;
+          const { view, state } = this.editor;
           const { from, to, $from, $to } = state.selection;
           //const startPos = state.doc.resolve(from);
           //const endPos = state.doc.resolve(to);
           //updateSelection( new TextSelection(startPos, endPos));
           //this.editor.setSelection( new TextSelection(startPos, endPos));
-          dispatch(state.tr.setSelection( new TextSelection($to)));
+          view.dispatch(state.tr.setSelection( new TextSelection($to)));
 
           //this.editor.commands.setSelection( new TextSelection(startPos, endPos));
           this.getTextSelection();
