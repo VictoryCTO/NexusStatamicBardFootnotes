@@ -1,6 +1,6 @@
 import { Mark, Plugin } from 'tiptap'
-import { updateMark, removeMark } from 'tiptap-commands'
-import {nodeEqualsType} from 'tiptap-utils'
+import { updateMark, removeMark, insertText } from 'tiptap-commands'
+import {nodeEqualsType, } from 'tiptap-utils'
 
 export default class NexusStatamicBardFootnote extends Mark {
     name() {

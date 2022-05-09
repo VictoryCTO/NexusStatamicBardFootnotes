@@ -40,6 +40,7 @@
 <script>
 import vClickOutside from 'v-click-outside';
 import { TextSelection } from 'prosemirror-state';
+import { selectClickedNode, updateSelection } from 'prosemirror-view';
 
 export default {
     directives: {
@@ -79,13 +80,20 @@ export default {
       },
       manipulateSelection() {
         //get the current selection
-        this.getTextSelection();
-        const { view, state } = this.editor;
-        const { from, to } = state.selection;
-        const startPos = state.doc.resolve(from+12);
-        const endPos = state.doc.resolve(to+12);
-        this.editor.commands.setSelection( new TextSelection(startPos, endPos));
-        this.getTextSelection();
+        const text = this.getTextSelection();
+
+        if(text==='a') {
+          console.log('we only selected "a"...nothing to do');
+        } else {
+          console.log('selected: "'+text+'"...jumping ahead');
+          const { view, state } = this.editor;
+          const { from, to } = state.selection;
+          const startPos = state.doc.resolve(from+12);
+          const endPos = state.doc.resolve(to+12);
+          //updateSelection( new TextSelection(startPos, endPos));
+          this.editor.commands.setSelection( new TextSelection(startPos, endPos));
+          this.getTextSelection();
+        }
         return true;
 
 
