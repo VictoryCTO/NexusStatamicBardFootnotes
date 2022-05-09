@@ -73,20 +73,34 @@ export default {
         const { view, state } = this.editor;
         const { from, to } = view.state.selection;
         const text = state.doc.textBetween(from, to, '');
-        console.log('currentSelection textBetween:'+text);
+        console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
+        console.log('currentSelection text:'+text);
         return text;
       },
       manipulateSelection() {
         //get the current selection
-        const { view, state } = this.editor;
+        this.getTextSelection();
+        const { from, to } = this.editor.state.selection;
+        const startPos = state.doc.resolve(from+12);
+        const endPos = state.doc.resolve(to+12);
+        this.editor.commands.setSelection( new TextSelection(startPos, endPos));
+        this.getTextSelection();
+        return true;
+
+
+
+        /*const { view, state } = this.editor;
         const currentSelection = state.selection;
         console.log('currentSelection from:'+currentSelection.from+' to:'+currentSelection.to);
         console.log('currentSelection anchor:'+currentSelection.anchor);
-        const text = state.doc.textBetween(currentSelection.from, currentSelection.to, '')
+        //const text = state.doc.textBetween(currentSelection.from, currentSelection.to, '')
         console.log('currentSelection textBetween:'+text);
-        return true;
+        //return true;
+
+        this.setSelectionAtPosition(view, currentSelection);
         //is the selection empty or is the selection just the hashtag
         if( currentSelection.empty || this.getTextSelection()==='#' ) {
+          console.log('this is just a hashtag')
           return true;
         //otherwise move the cursor to the end of the selection
         } else {
@@ -98,7 +112,7 @@ export default {
 // we want to add a block, it doesn't focus the next block
           //this.editor.commands.focus('start')
 
-          this.editor.insertContentAt(endPos, {type: "footnote"});
+          this.editor.chainCommands().insertTextAfter() insertContentAt(endPos, {type: "footnote"});
 
           //return true;
           //const endPos = currentSelection.to;
@@ -109,7 +123,7 @@ export default {
           this.editor.commands.setSelection( new TextSelection(endPos, endPos+1));
           //this.editor.chain().focus().setTextSelection(10).run()
           return true;
-        }
+        }*/
       },
       saveChanges() {
         //make sure data is saved
@@ -118,8 +132,6 @@ export default {
         this.closeFootnoteMenu();
       },
       setFootnote() {
-        //make sure this is either an empty selection or just a '#' or move the selection to the end
-        this.manipulateSelection();
         // update the editor
         this.editor.commands.nexusStatamicBardFootnote({
           url: this.url,
@@ -130,6 +142,8 @@ export default {
         this.showOptions = !this.showOptions;
         this.url = this.currentUrl;
         this.text = this.currentText;
+        //make sure this is either an empty selection or just a '#' or move the selection to the end
+        this.manipulateSelection();
       },
     }
 };
