@@ -80,7 +80,8 @@ export default {
       manipulateSelection() {
         //get the current selection
         this.getTextSelection();
-        const { from, to } = this.editor.state.selection;
+        const { view, state } = this.editor;
+        const { from, to } = state.selection;
         const startPos = state.doc.resolve(from+12);
         const endPos = state.doc.resolve(to+12);
         this.editor.commands.setSelection( new TextSelection(startPos, endPos));
