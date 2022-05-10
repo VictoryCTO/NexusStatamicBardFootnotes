@@ -20,6 +20,13 @@
           </div>
           <div class="flex items-center justify-end space-x-1 font-normal px-2 py-1.5">
             <button
+                aria-label="Delete Footnote"
+                class="btn btn-sm has-tooltip"
+                data-original-title="null"
+                @click="deleteFootnote">
+              Delete
+            </button>
+            <button
                 aria-label="Cancel Changes"
                 class="btn btn-sm has-tooltip"
                 data-original-title="null"
@@ -68,6 +75,12 @@ export default {
       closeFootnoteMenu() {
         // close the menu
         this.showOptions = false;
+      },
+      deleteFootnote() {
+        //remove the url
+        this.url = '';
+        //save the changes (triggers a delete)
+        this.saveChanges();
       },
       getTextSelection() {
         //get the current selection
