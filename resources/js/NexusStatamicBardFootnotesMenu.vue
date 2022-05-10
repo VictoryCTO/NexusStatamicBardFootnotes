@@ -81,20 +81,26 @@ export default {
       manipulateSelection() {
         //get the current selection
         const text = this.getTextSelection();
+        const { view, state, props } = this.editor;
+        const { from, to, $from, $to } = state.selection;
+        let markType = this.editor.schema.marks.nexusStatamicBardFootnote;
 
-        if(text==='#') {
+        if(text==='#' || state.doc.rangeHasMark(from, to, markType)) {
           console.log('we selected a current footnote...nothing to do');
         } else {
           console.log('selected: "'+text+'"...adding footnote after');
-          const { view, state, props } = this.editor;
-          const { from, to, $from, $to } = state.selection;
 
           const { tr: transaction } = view.state;
           //let mark = '<footnote>#</footnote>';
-          //transaction.insertText(mark, $to.pos);
-          let mark = this.editor.schema.marks.nexusStatamicBardFootnote.create();
-          transaction.insert($to.pos, mark);
-          transaction.setSelection(TextSelection.create(state.apply(transaction).doc, to, to + mark.length));
+          let mark = '#';
+          let newFrom = to;
+          let newTo = to + mark.length;
+          transaction.insertText(mark, newFrom);
+          transaction.addMark(newFrom, newTo, markType);
+
+          //let mark = markType.create();
+          //transaction.insert($to.pos, mark);
+          transaction.setSelection(TextSelection.create(state.apply(transaction).doc, newFrom, newTo));
           view.dispatch(transaction.scrollIntoView());
 
           this.getTextSelection();
