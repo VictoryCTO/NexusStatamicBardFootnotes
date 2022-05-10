@@ -85,30 +85,26 @@ export default {
         const { from, to, $from, $to } = state.selection;
         let markType = this.editor.schema.marks.nexusStatamicBardFootnote;
 
-        if(text==='#' || state.doc.rangeHasMark(from, to, markType)) {
+        if(state.doc.rangeHasMark(from, to, markType)) {
           console.log('we selected a current footnote...nothing to do');
         } else {
           console.log('selected: "'+text+'"...adding footnote after');
 
           const { tr: transaction } = view.state;
-          //let mark = '<footnote>#</footnote>';
           let mark = '#';
           let newFrom = to;
           let newTo = to + mark.length;
           transaction.insertText(mark, newFrom);
-          console.log('inserted text');
+          //console.log('inserted text');
           transaction.addMark(newFrom, newTo, markType.create());
-          console.log('added Mark');
-          //let mark = markType.create();
-          //transaction.insert($to.pos, mark);
+          //console.log('added Mark');
 
           transaction.setSelection(TextSelection.create(state.apply(transaction).doc, newFrom, newTo));
-          console.log('set the selection');
+          //console.log('set the selection');
           view.dispatch(transaction.scrollIntoView());
-          console.log('scrolled into view');
+          //console.log('scrolled into view');
 
-
-          this.getTextSelection();
+          //this.getTextSelection();
         }
       },
       saveChanges() {

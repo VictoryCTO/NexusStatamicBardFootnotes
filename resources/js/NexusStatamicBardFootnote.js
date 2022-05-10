@@ -32,7 +32,7 @@ export default class NexusStatamicBardFootnote extends Mark {
                     'data-url': mark.attrs.url,
                     'data-text': mark.attrs.text
                 },
-                "#",
+                0,
             ],
         };
     }
