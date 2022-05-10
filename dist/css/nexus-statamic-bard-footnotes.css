@@ -1,5 +1,5 @@
 body {
-    counter-reset: footnote-number 1;
+    /*counter-reset: footnote-number 1;*/
 }
 
 footnote {
@@ -18,9 +18,9 @@ footnote:after {
     vertical-align: super;
     font-weight: bold;
     cursor: pointer;
-    font-size: 75%;*/
+    font-size: 75%;
     counter-increment: number;
-    content: "counter(number) ";
+    content: "counter(number) ";*/
 
 
 }
