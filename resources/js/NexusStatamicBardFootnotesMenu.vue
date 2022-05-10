@@ -96,12 +96,17 @@ export default {
           let newFrom = to;
           let newTo = to + mark.length;
           transaction.insertText(mark, newFrom);
+          console.log('inserted text');
           transaction.addMark(newFrom, newTo, markType);
-
+          console.log('added Mark');
           //let mark = markType.create();
           //transaction.insert($to.pos, mark);
+
           transaction.setSelection(TextSelection.create(state.apply(transaction).doc, newFrom, newTo));
+          console.log('set the selection');
           view.dispatch(transaction.scrollIntoView());
+          console.log('scrolled into view');
+
 
           this.getTextSelection();
         }
