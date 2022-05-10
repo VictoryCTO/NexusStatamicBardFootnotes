@@ -263,7 +263,7 @@ __webpack_require__.r(__webpack_exports__);
         var newTo = to + mark.length;
         transaction.insertText(mark, newFrom);
         console.log('inserted text');
-        transaction.addMark(newFrom, newTo, markType);
+        transaction.addMark(newFrom, newTo, markType.create());
         console.log('added Mark'); //let mark = markType.create();
         //transaction.insert($to.pos, mark);
 
