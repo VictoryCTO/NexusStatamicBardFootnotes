@@ -24,7 +24,7 @@
                 class="btn btn-sm has-tooltip"
                 data-original-title="null"
                 @click="deleteFootnote">
-              Delete
+              Remove
             </button>
             <button
                 aria-label="Cancel Changes"
@@ -38,7 +38,7 @@
                 class="btn btn-sm has-tooltip"
                 data-original-title="null"
                 @click="saveChanges">
-              Save
+              Ok
             </button>
           </div>
         </div>

@@ -29541,7 +29541,7 @@ var render = function () {
                     },
                     on: { click: _vm.deleteFootnote },
                   },
-                  [_vm._v("\n          Delete\n        ")]
+                  [_vm._v("\n          Remove\n        ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -29567,7 +29567,7 @@ var render = function () {
                     },
                     on: { click: _vm.saveChanges },
                   },
-                  [_vm._v("\n          Save\n        ")]
+                  [_vm._v("\n          Ok\n        ")]
                 ),
               ]
             ),
