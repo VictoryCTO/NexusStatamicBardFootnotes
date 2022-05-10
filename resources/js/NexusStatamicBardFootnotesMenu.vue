@@ -79,8 +79,14 @@ export default {
       deleteFootnote() {
         //remove the url
         this.url = '';
-        //save the changes (triggers a delete)
+        //save the changes (triggers a delete of the mark)
         this.saveChanges();
+        //remove the '#'
+        const { view, state } = this.editor;
+        const { from, to } = state.selection;
+        const { tr: transaction } = view.state;
+        transaction.insertText('', from, to);
+        view.dispatch(transaction);
       },
       getTextSelection() {
         //get the current selection
