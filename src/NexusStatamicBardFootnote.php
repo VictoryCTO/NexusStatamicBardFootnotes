@@ -18,7 +18,7 @@ class NexusStatamicBardFootnote extends Mark
     {
         return [
             [
-                'tag'   => 'footnote',
+                'tag'   => 'sup',
                 'attrs' => [
                     'url' => $this->mark->attrs->url,
                     'text' => $this->mark->attrs->text,
