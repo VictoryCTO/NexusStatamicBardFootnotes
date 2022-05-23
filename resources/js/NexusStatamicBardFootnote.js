@@ -18,7 +18,7 @@ export default class NexusStatamicBardFootnote extends Mark {
             },
             parseDOM: [
                 {
-                    tag: "footnote",
+                    tag: "sup",
                     getAttrs: (dom) => ({
                         url: dom.getAttribute('data-url'),
                         text: dom.getAttribute('data-text'),
@@ -26,7 +26,7 @@ export default class NexusStatamicBardFootnote extends Mark {
                 }
             ],
             toDOM: (mark) => [
-                "footnote",
+                "sup",
                 {
                     'data-url': mark.attrs.url,
                     'data-text': mark.attrs.text

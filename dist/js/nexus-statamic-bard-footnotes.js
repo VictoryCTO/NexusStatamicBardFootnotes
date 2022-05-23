@@ -68,7 +68,7 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function (_Mark) {
           }
         },
         parseDOM: [{
-          tag: "footnote",
+          tag: "sup",
           getAttrs: function getAttrs(dom) {
             return {
               url: dom.getAttribute('data-url'),
@@ -77,7 +77,7 @@ var NexusStatamicBardFootnote = /*#__PURE__*/function (_Mark) {
           }
         }],
         toDOM: function toDOM(mark) {
-          return ["footnote", {
+          return ["sup", {
             'data-url': mark.attrs.url,
             'data-text': mark.attrs.text
           }, 0];
